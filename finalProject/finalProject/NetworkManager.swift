@@ -26,6 +26,7 @@ class NetworkManager: NSObject {
         } else {
             print("Changed: Server NOT Available")
         }
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "reachabilityChanged", object: nil))
     }
     
     override init() {

@@ -9,18 +9,16 @@
 import UIKit
 import ParseUI
 import Parse
+import MapKit
 
-class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
      //MARK: - Properties
     
     let networkManager = NetworkManager.sharedInstance
     let dataManager = DataManager.sharedInstance
     
-    
-    
-   
-    
+    @IBOutlet   var         stationMapView             :MKMapView!
     
     @IBOutlet   var         loginButton             :UIBarButtonItem!
     
@@ -85,16 +83,108 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 
     
     
+    //MARK: - MapKit Methods
     
+    var locationManager: CLLocationManager = CLLocationManager()
+    
+    func centerMapOnLocation(map:MKMapView) {
+        print("Map on Location")
+        let currentLocation = locationManager.location!.coordinate
+        print(currentLocation)
+        let center = CLLocationCoordinate2DMake(currentLocation.latitude, currentLocation.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.0675, longitudeDelta: 0.0675))
+        map.setRegion(region, animated: true)
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isMemberOfClass(MKUserLocation.self) {
+            return nil
+        } else {
+            let identifier = "pin"
+            var pin = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            if pin == nil {
+                pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pin!.canShowCallout = true
+                pin!.pinTintColor = UIColor.blueColor()
+                pin!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
+            }
+            pin!.annotation = annotation
+            return pin
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        locationManager.stopUpdatingLocation()
+        centerMapOnLocation(stationMapView)
+    }
+    
+    func turnOnLocationMonitoring() {
+        print("starting monitoring")
+        locationManager.startUpdatingLocation()
+        stationMapView.showsUserLocation = true
+    }
+    
+    func setupLocationMonitoring () {
+        locationManager = CLLocationManager ()
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        if CLLocationManager.locationServicesEnabled() {
+            print("LocSvcs Enabled")
+            switch CLLocationManager.authorizationStatus() {
+            case .AuthorizedAlways, .AuthorizedWhenInUse:
+                print("Always")
+                turnOnLocationMonitoring()
+            case .Denied, .Restricted:
+                print("Hey User - turn us back on");
+            case .NotDetermined:
+                print("Not Determined")
+                locationManager.requestWhenInUseAuthorization()
+            }
+            
+        } else {
+            print("Turn on Location Services in Settings");
+        }
+    }
+
+    func annotateMapLocations() {
+        var pinsToRemove = [MKAnnotation]()
+        for annot: MKAnnotation in stationMapView.annotations {
+            if annot.isKindOfClass(MKPointAnnotation) {
+                pinsToRemove.append(annot)
+            }
+        }
+        stationMapView.removeAnnotations(pinsToRemove)
+        
+        var pinsToAdd = [MKAnnotation]()
+        for station in dataManager.stationsArray {
+            let pin = MKPointAnnotation()
+            pin.coordinate = CLLocationCoordinate2DMake(Double(station.stationLat)!, Double(station.stationLon)!)
+            pin.title = station.stationName
+            pin.subtitle = station.stationStreet
+            pinsToAdd.append(pin)
+        }
+        stationMapView.addAnnotations(pinsToAdd)
+    }
     
     //MARK: - Get Data Methods
     
-    @IBAction func getDataSearchButton(sender: UIButton) {
+    @IBAction func getDataSearchButton(sender: UIBarButtonItem) {
         if networkManager.serverAvailable {
             print ("server available")
             dataManager.getDataFromServer()
         } else {
             print("Server Not Available")
+        }
+    }
+    
+    func getStationList() {
+        if networkManager.serverAvailable {
+            print("server available - station list")
+            dataManager.getStationListFromServer()
+        } else {
+            print("server is not available - station list")
         }
     }
 
@@ -104,7 +194,13 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "getStationList", name: "reachabilityChanged", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "annotateMapLocations", name: "receivedStationListFromServer", object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        setupLocationMonitoring()
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,32 +18,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1U-il-8Di">
-                                <rect key="frame" x="161" y="82" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="searchBarSearchButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Znu-di-DuG"/>
-                                </connections>
-                            </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-SN-WKv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qJe-SN-WKv" secondAttribute="trailing" id="3el-rK-gIZ"/>
+                            <constraint firstItem="qJe-SN-WKv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="97r-Xr-tPw"/>
+                            <constraint firstItem="qJe-SN-WKv" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Pw2-4d-fUB"/>
+                            <constraint firstItem="qJe-SN-WKv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RG2-kG-aPu"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="acO-Om-2Ek">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="bNN-zr-TBp">
-                            <connections>
-                                <action selector="loginButtonPressed:" destination="BYZ-38-t0r" id="Qp1-kz-E88"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem title="Login" id="bNN-zr-TBp">
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="BYZ-38-t0r" id="Qp1-kz-E88"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="CurrentStationData" id="eO5-mF-mWi">
+                                <connections>
+                                    <action selector="getDataSearchButton:" destination="BYZ-38-t0r" id="QpR-25-3Y0"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="NR" id="SLc-dC-D05">
                             <connections>
                                 <segue destination="VqN-LP-WFV" kind="show" id="nan-Ta-35w"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="stationMapView" destination="qJe-SN-WKv" id="2Fh-24-3BZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="265"/>
+            <point key="canvasLocation" x="1001" y="-339"/>
         </scene>
         <!--Title-->
         <scene sceneID="GC5-EG-IeY">
@@ -75,7 +87,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSM-yx-r6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1812" y="265"/>
+            <point key="canvasLocation" x="1748" y="-339"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LJD-xn-UKD">
@@ -93,7 +105,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQz-xN-rsH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="259" y="265"/>
+            <point key="canvasLocation" x="211" y="396"/>
         </scene>
     </scenes>
 </document>
