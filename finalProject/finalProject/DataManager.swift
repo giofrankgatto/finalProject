@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class DataManager: NSObject {
     
@@ -16,7 +17,10 @@ class DataManager: NSObject {
 
     var baseURLString = "api.wmata.com"
     let apiKey = "44e1abafef1145eebc44b74164f4125d"
-    var stationsArray = [StationVariables]()
+    var stationsArray = [Stations]()
+    var trainsArray = [Trains]()
+    var issuesArray = [PFObject]()
+    var reportedIssuesArray = [PFObject]()
     
     //MARK: - Get Data Methods
     
@@ -24,16 +28,16 @@ class DataManager: NSObject {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
             print("JSON:\(jsonResult)")
-            let trainsArray = jsonResult.objectForKey("Trains") as! NSArray
-            for train in trainsArray {
-                let currentStationInfo = StationVariables ()
+            let tempArray = jsonResult.objectForKey("Trains") as! NSArray
+            for train in tempArray {
+                let currentStationInfo = Trains()
 //                stationInfo.numberOfCars = String(train.objectForKey("Car")!)
                 currentStationInfo.destinationName = String(train.objectForKey("DestinationName")!)
                 currentStationInfo.lineColor = String(train.objectForKey("Line")!)
                 currentStationInfo.locationName = String(train.objectForKey("LocationName")!)
                 currentStationInfo.minutesToArrival = String(train.objectForKey("Min")!)
                 print("Station Name: \(currentStationInfo.locationName)")
-                stationsArray.append(currentStationInfo)
+                trainsArray.append(currentStationInfo)
             }
             print("Count \(stationsArray.count)")
             
@@ -98,13 +102,18 @@ class DataManager: NSObject {
     
     //MARK: - Station List Methods
     
+    func getStationWithName(stationName: String) -> Stations {
+        let selectedStation = stationsArray.filter({$0.stationName == stationName})
+        return selectedStation[0]
+    }
+    
     func parseStationListData (data: NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
             print("JSON:\(jsonResult)")
             let stationListArray = jsonResult.objectForKey("Stations") as! [NSDictionary]
             for station in stationListArray {
-                let stationListInfo = StationVariables ()
+                let stationListInfo = Stations ()
                 stationListInfo.stationLat = String(station ["Lat"]!)
                 stationListInfo.stationLon = String(station ["Lon"]!)
                 stationListInfo.stationName = String (station ["Name"]!)
@@ -161,7 +170,46 @@ class DataManager: NSObject {
         task.resume()
     }
     
-
+    
+    //MARK: - Issue Fetch Method
+    
+    func fetchIssuesFromParse() {
+        let fetchIssues = PFQuery(className: "ReportIssue")
+        fetchIssues.orderByAscending("issueName")
+        fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                print("Got Classes Data")
+                self.issuesArray = objects!
+                //                print("Issues Array: \(self.issuesArray)")
+                dispatch_async(dispatch_get_main_queue()) {
+                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedIssueDataFromServer", object: nil))
+                }
+            } else {
+                print("No Issues")
+            }
+        }
+        
+    }
+    
+    func fetchReportedIssuesFromParse(selectedStation: String) {
+        let fetchIssues = PFQuery(className: "IssueReported")
+        fetchIssues.whereKey("Station", equalTo: selectedStation)
+        fetchIssues.orderByAscending("Issue")
+        fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                print("Got Classes Data")
+                self.reportedIssuesArray = objects!
+                //                print("Issues Array: \(self.issuesArray)")
+                dispatch_async(dispatch_get_main_queue()) {
+                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedReportedIssueDataFromServer", object: nil))
+                }
+            } else {
+                print("No Issues")
+            }
+        }
+        
+    }
+    
     
     
     

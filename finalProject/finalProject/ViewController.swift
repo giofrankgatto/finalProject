@@ -10,6 +10,8 @@ import UIKit
 import ParseUI
 import Parse
 import MapKit
+//import CoreData
+
 
 class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -17,10 +19,11 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     let networkManager = NetworkManager.sharedInstance
     let dataManager = DataManager.sharedInstance
+    var selectedStationName :String!
     
-    @IBOutlet   var         stationMapView             :MKMapView!
     
-    @IBOutlet   var         loginButton             :UIBarButtonItem!
+    @IBOutlet   var         stationMapView              :MKMapView!
+    @IBOutlet   var         loginButton                 :UIBarButtonItem!
     
     
     
@@ -83,6 +86,8 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 
     
     
+   
+    
     //MARK: - MapKit Methods
     
     var locationManager: CLLocationManager = CLLocationManager()
@@ -92,26 +97,11 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         let currentLocation = locationManager.location!.coordinate
         print(currentLocation)
         let center = CLLocationCoordinate2DMake(currentLocation.latitude, currentLocation.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.0675, longitudeDelta: 0.0675))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025))
         map.setRegion(region, animated: true)
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation.isMemberOfClass(MKUserLocation.self) {
-            return nil
-        } else {
-            let identifier = "pin"
-            var pin = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
-            if pin == nil {
-                pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-                pin!.canShowCallout = true
-                pin!.pinTintColor = UIColor.blueColor()
-                pin!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure) as UIView
-            }
-            pin!.annotation = annotation
-            return pin
-        }
-    }
+    
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
@@ -167,7 +157,48 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         }
         stationMapView.addAnnotations(pinsToAdd)
     }
+   
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isMemberOfClass(MKUserLocation.self) {
+            return nil
+        } else {
+            let identifier = "pin"
+            var pin = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            if pin == nil {
+                pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pin!.canShowCallout = true
+                pin!.pinTintColor = UIColor.blueColor()
+                pin!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            }
+            pin!.annotation = annotation
+            return pin
+        }
+    }
     
+    
+    //MARK: - Segue Methods
+    
+    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("Tapped")
+        self.selectedStationName = view.annotation!.title!
+        self.performSegueWithIdentifier("segueStationDetail", sender: self)
+    }
+
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segueStationDetail" {
+            let destController = segue.destinationViewController as! StationInfoViewController
+            destController.currentStation = dataManager.getStationWithName(selectedStationName)
+        }
+    }
+ 
+    
+    
+    
+    
+    
+    
+
     //MARK: - Get Data Methods
     
     @IBAction func getDataSearchButton(sender: UIBarButtonItem) {
@@ -189,6 +220,26 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     }
 
     
+//    //MARK: - Core Data Methods
+//    
+//    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//    let managedObjectContext :NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+//    var stationsArray = [MetroStation] ()
+//    
+//    func tempAddRecords () {
+//        let entityDescription : NSEntityDescription! = NSEntityDescription.entityForName("MetroStation", inManagedObjectContext: managedObjectContext)
+//        let currentStation : MetroStation! = MetroStation(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
+//        
+//        currentStation.stationName = "Addison Road-Seat Pleasant"
+//        currentStation.stationLine1 = "Silver"
+//        currentStation.stationLine2 = "Blue"
+//        currentStation.stationLat = "38.886713"
+//        currentStation.stationLon = "-76.893592"
+//        
+//        let currentStation2 : MetroStation! = MetroStation(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
+
+
+    
     
     //MARK: - Life Cycle Methods
     
@@ -196,6 +247,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getStationList", name: "reachabilityChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "annotateMapLocations", name: "receivedStationListFromServer", object: nil)
+        dataManager.getStationListFromServer()  
     }
     
     override func viewWillAppear(animated: Bool) {

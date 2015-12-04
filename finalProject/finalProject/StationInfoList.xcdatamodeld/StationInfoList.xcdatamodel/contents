@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F27" minimumToolsVersion="Xcode 7.0">
+    <entity name="MetroStation" representedClassName=".MetroStation" syncable="YES">
+        <attribute name="dateEntered" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="stationLat" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationLine1" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationLine2" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationLine3" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationLine4" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationLine5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationLon" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stationName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="MetroStation" positionX="-63" positionY="-18" width="128" height="210"/>
+    </elements>
+</model>
