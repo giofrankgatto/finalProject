@@ -49,6 +49,7 @@
                         </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="SLc-dC-D05">
                             <connections>
+                                <action selector="getDataSearchButton:" destination="BYZ-38-t0r" id="7jb-JY-ih7"/>
                                 <segue destination="VqN-LP-WFV" kind="show" id="k1M-gp-Slr"/>
                             </connections>
                         </barButtonItem>

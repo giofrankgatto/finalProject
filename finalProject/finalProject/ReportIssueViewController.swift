@@ -152,14 +152,16 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        dataManager.fetchIssuesFromParse()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newIssueDataReceived", name: "receivedIssueDataFromServer", object: nil)
         self.setBlueColor()
         self.setGreenColor()
         self.setRedButtonColor()
         self.setOrangeColor()
         self.setYellowColor()
-        self.setSilverColor()   
-
+        self.setSilverColor()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

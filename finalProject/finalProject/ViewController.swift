@@ -247,7 +247,8 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getStationList", name: "reachabilityChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "annotateMapLocations", name: "receivedStationListFromServer", object: nil)
-        dataManager.getStationListFromServer()  
+        dataManager.getStationListFromServer()
+        dataManager.fetchIssuesFromParse()
     }
     
     override func viewWillAppear(animated: Bool) {
