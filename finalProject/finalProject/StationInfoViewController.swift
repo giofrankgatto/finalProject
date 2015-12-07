@@ -14,7 +14,9 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var          issuesTableView     :UITableView!
     @IBOutlet weak var          stationName         :UILabel!
+    @IBOutlet weak var          trainLocation       :UILabel!
     var currentStation :Stations!
+    var currentTrain :Trains!
     
     let dataManager = DataManager.sharedInstance
     
@@ -40,6 +42,10 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
+   //MARK: - API Data Label Methods
+    
+    
+    
     
     
     
@@ -50,6 +56,9 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         self.title = currentStation.stationName
         stationName.text = currentStation.stationName
+        
+//        trainLocation.text = currentTrain.locationName
+        dataManager.getDataFromServer()
         dataManager.fetchReportedIssuesFromParse(currentStation.stationName)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotNewIssues", name: "receivedReportedIssueDataFromServer", object: nil)
     }

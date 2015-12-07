@@ -51,7 +51,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         print("Login Button Pressed")
         if let _ = PFUser.currentUser() {
             PFUser.logOut()
-            loginButton.title = "Log In"
+            loginButton.title = "Login"
         } else {
             
             let loginController = PFLogInViewController()
@@ -189,6 +189,8 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         if segue.identifier == "segueStationDetail" {
             let destController = segue.destinationViewController as! StationInfoViewController
             destController.currentStation = dataManager.getStationWithName(selectedStationName)
+//            destController.currentTrain = dataManager.getDataFromServer()
+            print(selectedStationName)
         }
     }
  

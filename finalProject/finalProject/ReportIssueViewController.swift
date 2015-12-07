@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class ReportIssueViewController: UIViewController, UIImagePickerControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -27,29 +28,65 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     
 
 
-//    //MARK: - Camera Methods
-//    
-//    
-//    @IBAction func cameraButtonTapped (sender: UIBarButtonItem) {
-//        print("Camera button Tapped")
-//        let imagePicker = UIImagePickerController()
-//        if imagePicker.sourceType == UIImagePickerControllerSourceType.Camera {
-//        [self .presentViewController(imagePicker, animated: true, completion: nil)]
-//        } else {
-//        print("Warning - no camera")
-//        }
-//    }
-//
-//    
-//    @IBAction func galleryButtonTapped (sender: UIBarButtonItem) {
-//        print("Gallery Button Tapped")
-//        let imagePicker = UIImagePickerController()
-//        if imagePicker.sourceType == UIImagePickerControllerSourceType.SavedPhotosAlbum {
-//            [self .presentViewController(imagePicker, animated: true, completion: nil)]
-//        } else {
-//            print("No gallery")
-//        }
-//    }
+    //MARK: - Camera Methods
+    
+    @IBOutlet weak var previewView :UIView!
+    var captureSession :AVCaptureSession?
+    var previewLayer :AVCaptureVideoPreviewLayer?
+    
+    @IBOutlet weak var capturedImage   :UIImageView!
+    var stillImageOutput :AVCaptureStillImageOutput?
+    
+    
+    func startCaptureSession () {
+        captureSession = AVCaptureSession()
+        captureSession!.sessionPreset = AVCaptureSessionPresetPhoto
+        
+        let backCamera = AVCaptureDevice.defaultDeviceWithMediaType(AVMediaTypeVideo)
+        var error :NSError?
+        var input :AVCaptureDeviceInput!
+        do {
+            input = try AVCaptureDeviceInput(device: backCamera)
+        } catch let error1 as NSError {
+            error = error1
+            input = nil
+            print("Error")
+        }
+        if error == nil && captureSession!.canAddInput(input) {
+            captureSession!.addInput(input)
+            
+            stillImageOutput = AVCaptureStillImageOutput ()
+            stillImageOutput!.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
+            if captureSession!.canAddOutput(stillImageOutput) {
+                captureSession!.addOutput(stillImageOutput)
+            }
+            
+            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            previewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
+            previewLayer!.connection.videoOrientation = AVCaptureVideoOrientation.Portrait //could also be written as .Portrait without the AVCap blah blah since we set previewLayer to that above when we set the variables
+            previewView.layer.addSublayer(previewLayer!)
+            
+            captureSession!.startRunning()
+            
+        }
+    }
+    
+    @IBAction func didPressTakePhotoButton (sender: UIButton) {
+        if let videoConnection = stillImageOutput!.connectionWithMediaType(AVMediaTypeVideo) {
+            videoConnection.videoOrientation = .Portrait
+            stillImageOutput?.captureStillImageAsynchronouslyFromConnection(videoConnection, completionHandler: { (sampleBuffer, error) -> Void in
+                if sampleBuffer != nil {
+                    let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(sampleBuffer)
+                    let dataProvider = CGDataProviderCreateWithCFData(imageData)
+                    let cgImageRef = CGImageCreateWithJPEGDataProvider(dataProvider, nil, true, .RenderingIntentDefault)
+                    
+                    let image = UIImage(CGImage: cgImageRef!, scale: 1.0, orientation: .Right)
+                    self.capturedImage.image = image
+                }
+            })
+        }
+        
+    }
     
     
 
@@ -168,6 +205,15 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        startCaptureSession()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        previewLayer!.frame = previewView.bounds
+    }
 
   
 }
