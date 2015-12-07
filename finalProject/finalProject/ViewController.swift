@@ -20,9 +20,10 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     let networkManager = NetworkManager.sharedInstance
     let dataManager = DataManager.sharedInstance
     var selectedStationName :String!
+    var selectedTrainName :String!
     
     
-    @IBOutlet   var         stationMapView              :MKMapView!
+    @IBOutlet   weak var         stationMapView              :MKMapView!
     @IBOutlet   var         loginButton                 :UIBarButtonItem!
     
     
@@ -91,6 +92,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     //MARK: - MapKit Methods
     
     var locationManager: CLLocationManager = CLLocationManager()
+   
     
     func centerMapOnLocation(map:MKMapView) {
         print("Map on Location")
@@ -175,13 +177,16 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         }
     }
     
+  
     
     //MARK: - Segue Methods
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         print("Tapped")
         self.selectedStationName = view.annotation!.title!
+        self.selectedTrainName = view.annotation!.title!
         self.performSegueWithIdentifier("segueStationDetail", sender: self)
+        print("segue to station")
     }
 
     
@@ -189,8 +194,8 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         if segue.identifier == "segueStationDetail" {
             let destController = segue.destinationViewController as! StationInfoViewController
             destController.currentStation = dataManager.getStationWithName(selectedStationName)
-//            destController.currentTrain = dataManager.getDataFromServer()
             print(selectedStationName)
+            
         }
     }
  
@@ -203,14 +208,14 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 
     //MARK: - Get Data Methods
     
-    @IBAction func getDataSearchButton(sender: UIBarButtonItem) {
-        if networkManager.serverAvailable {
-            print ("server available")
-            dataManager.getDataFromServer()
-        } else {
-            print("Server Not Available")
-        }
-    }
+//    @IBAction func getDataSearchButton(sender: UIBarButtonItem) {
+//        if networkManager.serverAvailable {
+//            print ("server available")
+//            dataManager.getDataFromServer()
+//        } else {
+//            print("Server Not Available")
+//        }
+//    }
     
     func getStationList() {
         if networkManager.serverAvailable {
@@ -237,8 +242,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 //        currentStation.stationLine2 = "Blue"
 //        currentStation.stationLat = "38.886713"
 //        currentStation.stationLon = "-76.893592"
-//        
-//        let currentStation2 : MetroStation! = MetroStation(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
 
 
     

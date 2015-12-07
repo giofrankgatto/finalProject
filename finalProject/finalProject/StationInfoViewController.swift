@@ -11,7 +11,7 @@ import Parse
 
 class StationInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
+    @IBOutlet weak var          trainsTableView     :UITableView!
     @IBOutlet weak var          issuesTableView     :UITableView!
     @IBOutlet weak var          stationName         :UILabel!
     @IBOutlet weak var          trainLocation       :UILabel!
@@ -24,43 +24,62 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
     //MARK: Table View Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataManager.reportedIssuesArray.count
+        if tableView == issuesTableView {
+            return dataManager.reportedIssuesArray.count
+        } else if tableView == trainsTableView {
+            return dataManager.trainsArray.count
+        }
+        return 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! StationTableViewCell
-        let currentIssue = dataManager.reportedIssuesArray[indexPath.row]
-        cell.issueNameLabel!.text = (currentIssue["Issue"] as! String)
-        return cell
+        if tableView == issuesTableView {
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! StationTableViewCell
+            let currentIssue = dataManager.reportedIssuesArray[indexPath.row]
+            cell.issueNameLabel!.text = (currentIssue["Issue"] as! String)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TrainTableViewCell
+            let nextTrain = dataManager.trainsArray[indexPath.row]
+            //            cell.locationName!.text = (nextTrain.locationName as String)
+            cell.destinationName!.text = (nextTrain.destinationName as String)
+            cell.minutesToArrival!.text = (nextTrain.minutesToArrival as String)
+            cell.lineColor!.text = (nextTrain.lineColor as String)
+            return cell
+            
+        }
     }
     
-
     
-
+    
     func gotNewIssues() {
         issuesTableView.reloadData()
     }
     
+    func gotTrains() {
+        trainsTableView.reloadData()
+    }
     
    //MARK: - API Data Label Methods
     
     
     
     
-    
+        
     
     
     //MARK: - Life Cycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(currentStation.stationName)
         self.title = currentStation.stationName
-        stationName.text = currentStation.stationName
+       // stationName.text = currentStation.stationName
         
-//        trainLocation.text = currentTrain.locationName
-        dataManager.getDataFromServer()
+        dataManager.getTrainsFromServer(currentStation.stationCode)
         dataManager.fetchReportedIssuesFromParse(currentStation.stationName)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotNewIssues", name: "receivedReportedIssueDataFromServer", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotTrains", name: "receivedTrainDataFromServer", object: nil)
     }
 
     override func didReceiveMemoryWarning() {

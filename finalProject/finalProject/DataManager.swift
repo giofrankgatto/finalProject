@@ -24,26 +24,32 @@ class DataManager: NSObject {
     
     //MARK: - Get Data Methods
     
+    func getTrainWithName(locationName: String) -> Trains {
+        let selectedStation = trainsArray.filter({$0.locationName == locationName})
+        return selectedStation[0]
+    }
+    
     func parseStationData (data: NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
             print("JSON:\(jsonResult)")
+            trainsArray.removeAll()
             let tempArray = jsonResult.objectForKey("Trains") as! NSArray
             for train in tempArray {
-                let currentStationInfo = Trains()
+                let currentTrainInfo = Trains()
 //                stationInfo.numberOfCars = String(train.objectForKey("Car")!)
-                currentStationInfo.destinationName = String(train.objectForKey("DestinationName")!)
-                currentStationInfo.lineColor = String(train.objectForKey("Line")!)
-                currentStationInfo.locationName = String(train.objectForKey("LocationName")!)
-                currentStationInfo.minutesToArrival = String(train.objectForKey("Min")!)
-                print("Station Name: \(currentStationInfo.locationName)")
-                trainsArray.append(currentStationInfo)
+                currentTrainInfo.destinationName = String(train.objectForKey("DestinationName")!)
+                currentTrainInfo.lineColor = String(train.objectForKey("Line")!)
+                currentTrainInfo.locationName = String(train.objectForKey("LocationName")!)
+                currentTrainInfo.minutesToArrival = String(train.objectForKey("Min")!)
+                print("Station Name: \(currentTrainInfo.locationName)")
+                trainsArray.append(currentTrainInfo)
             }
-            print("Count \(stationsArray.count)")
+            print("Train Count \(trainsArray.count)")
             
             
             dispatch_async(dispatch_get_main_queue()) {
-                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedDataFromServer", object: nil))
+                NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedTrainDataFromServer", object: nil))
             }
         } catch {
             print ("JSON Parsing Error")
@@ -52,12 +58,14 @@ class DataManager: NSObject {
     
     
     
-    func getDataFromServer() {
+    func getTrainsFromServer(stationCode: String) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         defer {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
-        let url = NSURL(string: "http://\(baseURLString)/StationPrediction.svc/json/GetPrediction/All")
+//        let url = NSURL(string: "http://\(baseURLString)/StationPrediction.svc/json/GetPrediction/All")
+        print("Would be: \("http://\(baseURLString)/StationPrediction.svc/json/GetPrediction/\(stationCode)")")
+        let url = NSURL(string: "http://\(baseURLString)/StationPrediction.svc/json/GetPrediction/\(stationCode)")
         let urlRequest = NSMutableURLRequest(URL: url!, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
         urlRequest.HTTPMethod = "GET"
         urlRequest.addValue(apiKey, forHTTPHeaderField: "api_key")
@@ -117,6 +125,7 @@ class DataManager: NSObject {
                 stationListInfo.stationLat = String(station ["Lat"]!)
                 stationListInfo.stationLon = String(station ["Lon"]!)
                 stationListInfo.stationName = String (station ["Name"]!)
+                stationListInfo.stationCode = String(station["Code"]!)
                 print("Station Name: \(stationListInfo.stationName)")
 
                 let stationAddress = station.objectForKey("Address") as! NSDictionary
