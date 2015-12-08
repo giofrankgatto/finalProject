@@ -256,51 +256,84 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kGd-ai-Bpg"/>
                                 </constraints>
-                                <state key="normal" title="BLUE"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="BLUE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="blueButtonPressed:" destination="VqN-LP-WFV" eventType="touchUpInside" id="kUq-Kq-JoS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yGE-QP-QRo">
                                 <rect key="frame" x="210" y="164" width="180" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fh7-i3-qdJ"/>
                                 </constraints>
-                                <state key="normal" title="GREEN"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="GREEN">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="fh7-i3-qdJ"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="greenButtonPressed:" destination="VqN-LP-WFV" eventType="touchUpInside" id="tHA-dq-bkM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vsj-5n-83q">
                                 <rect key="frame" x="390" y="164" width="180" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Yw6-uE-Hll"/>
                                 </constraints>
-                                <state key="normal" title="ORANGE"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="ORANGE">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Yw6-uE-Hll"/>
                                     </mask>
                                 </variation>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USS-5a-qVa">
-                                <rect key="frame" x="30" y="194" width="180" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Nj5-S7-cLW"/>
-                                </constraints>
-                                <state key="normal" title="RED"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Nj5-S7-cLW"/>
-                                    </mask>
-                                </variation>
+                                <connections>
+                                    <action selector="orangeButtonPressed:" destination="VqN-LP-WFV" eventType="touchUpInside" id="Spq-aC-F15"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z05-T4-XPf">
                                 <rect key="frame" x="210" y="194" width="180" height="30"/>
-                                <state key="normal" title="SILVER"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="SILVER">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="silverButtonPressed:" destination="VqN-LP-WFV" eventType="touchUpInside" id="GfD-aC-M2u"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BQz-xa-ePJ">
                                 <rect key="frame" x="390" y="194" width="180" height="30"/>
-                                <state key="normal" title="YELLOW"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="YELLOW">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="yellowButtonPressed:" destination="VqN-LP-WFV" eventType="touchUpInside" id="HrI-cG-d8C"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Metro Line" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qE-qd-7gi">
                                 <rect key="frame" x="20" y="135" width="560" height="21"/>
@@ -352,6 +385,30 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="USS-5a-qVa">
+                                <rect key="frame" x="30" y="194" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Nj5-S7-cLW"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="RED">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Nj5-S7-cLW"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="redButtonPressed:" destination="VqN-LP-WFV" eventType="touchUpInside" id="Wzf-qB-455"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -372,6 +429,7 @@
                             <constraint firstItem="USS-5a-qVa" firstAttribute="width" secondItem="b2f-HU-L3P" secondAttribute="height" multiplier="6:1" id="HIV-jt-RkE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sNY-4g-Ix7" secondAttribute="trailing" constant="-20" id="HKK-MU-jNb"/>
                             <constraint firstItem="yGE-QP-QRo" firstAttribute="leading" secondItem="b2f-HU-L3P" secondAttribute="trailing" constant="50" id="I5D-lA-hBw"/>
+                            <constraint firstItem="USS-5a-qVa" firstAttribute="top" secondItem="b2f-HU-L3P" secondAttribute="bottom" id="K1S-Au-mkT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gbA-7j-9Ij" secondAttribute="trailing" constant="136" id="LDP-dS-8j7"/>
                             <constraint firstItem="Ule-mX-Sww" firstAttribute="leading" secondItem="Kvx-Gt-DKq" secondAttribute="leadingMargin" constant="47" id="NRx-2x-1fW"/>
                             <constraint firstItem="SM1-mg-V6C" firstAttribute="top" secondItem="Ody-wE-xow" secondAttribute="bottom" constant="8" id="Taf-Yo-4vl"/>
@@ -412,6 +470,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="pcm-QT-XrL"/>
                                 <exclude reference="I5D-lA-hBw"/>
                                 <exclude reference="X0B-RS-O9O"/>
                                 <exclude reference="fza-MY-gBv"/>

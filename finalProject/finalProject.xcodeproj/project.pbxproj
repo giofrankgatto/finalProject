@@ -25,6 +25,7 @@
 		8FB34E651C11FF8900E9B361 /* StationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB34E641C11FF8900E9B361 /* StationTableViewCell.swift */; };
 		8FB34E671C1214EB00E9B361 /* Stations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB34E661C1214EB00E9B361 /* Stations.swift */; };
 		8FB34E691C12151800E9B361 /* Trains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB34E681C12151800E9B361 /* Trains.swift */; };
+		8FFC08191C172057009C6152 /* LineIssuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FFC08181C172057009C6152 /* LineIssuesViewController.swift */; };
 		992097C965E1FB36D06B4279 /* Pods_finalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E8B04069BB478F534FF1602 /* Pods_finalProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		8FB34E641C11FF8900E9B361 /* StationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationTableViewCell.swift; sourceTree = "<group>"; };
 		8FB34E661C1214EB00E9B361 /* Stations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 		8FB34E681C12151800E9B361 /* Trains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trains.swift; sourceTree = "<group>"; };
+		8FFC08181C172057009C6152 /* LineIssuesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineIssuesViewController.swift; sourceTree = "<group>"; };
 		BDD610F483B61A38B1967F0B /* Pods-finalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				8F5C59291C0F54CC00CECCBA /* CoreData */,
 				8F81ADA11C0C984A00D29A1E /* AppDelegate.swift */,
 				8F81ADA31C0C984A00D29A1E /* ViewController.swift */,
+				8FFC08181C172057009C6152 /* LineIssuesViewController.swift */,
 				8F81ADC21C0CEFED00D29A1E /* ReportIssueViewController.swift */,
 				8FB34E621C11EAEA00E9B361 /* StationInfoViewController.swift */,
 				8F235AD61C15E42600E15358 /* TrainTableViewCell.swift */,
@@ -282,6 +285,7 @@
 				8F81ADBF1C0CA20300D29A1E /* StationVariables.swift in Sources */,
 				8FB34E691C12151800E9B361 /* Trains.swift in Sources */,
 				8F5C59281C0F44F000CECCBA /* StationInfoList.xcdatamodeld in Sources */,
+				8FFC08191C172057009C6152 /* LineIssuesViewController.swift in Sources */,
 				8F81ADA21C0C984A00D29A1E /* AppDelegate.swift in Sources */,
 				8F235AD71C15E42600E15358 /* TrainTableViewCell.swift in Sources */,
 				8F5C59301C0F5B0100CECCBA /* MetroStation+CoreDataProperties.swift in Sources */,

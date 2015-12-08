@@ -18,5 +18,10 @@ class Stations: NSObject {
     var stationLon             :String!
     var stationName            :String!
     var stationCode            :String!
+    var stationLine1           :String!
+    var stationLine2           :String!
+    var stationLine3           :String!
+    var stationLine4           :String!
+    var stationLine5           :String!
 
 }

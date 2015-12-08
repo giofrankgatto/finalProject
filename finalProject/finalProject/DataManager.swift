@@ -126,6 +126,11 @@ class DataManager: NSObject {
                 stationListInfo.stationLon = String(station ["Lon"]!)
                 stationListInfo.stationName = String (station ["Name"]!)
                 stationListInfo.stationCode = String(station["Code"]!)
+                stationListInfo.stationLine1 = String(station["LineCode1"]!)
+                stationListInfo.stationLine2 = String(station["LineCode2"]!)
+                stationListInfo.stationLine3 = String(station["LineCode3"]!)
+                stationListInfo.stationLine4 = String(station["LineCode4"]!)
+                
                 print("Station Name: \(stationListInfo.stationName)")
 
                 let stationAddress = station.objectForKey("Address") as! NSDictionary

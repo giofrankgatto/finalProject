@@ -12,7 +12,6 @@ import Parse
 import MapKit
 //import CoreData
 
-
 class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
      //MARK: - Properties
@@ -195,14 +194,8 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             let destController = segue.destinationViewController as! StationInfoViewController
             destController.currentStation = dataManager.getStationWithName(selectedStationName)
             print(selectedStationName)
-            
         }
     }
- 
-    
-    
-    
-    
     
     
 

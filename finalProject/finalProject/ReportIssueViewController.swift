@@ -18,6 +18,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var      issuePicker             :UIPickerView!
     @IBOutlet weak var      stationsPicker          :UIPickerView!
     @IBOutlet weak var      saveToParseButton       :UIBarButtonItem!
+    var stationsLineArray = [Stations]()
     
     @IBOutlet var      blueButton              :UIButton!
     @IBOutlet var      greenButton             :UIButton!
@@ -104,7 +105,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         if pickerView == issuePicker {
             return dataManager.issuesArray.count
         } else if pickerView == stationsPicker {
-            return dataManager.stationsArray.count
+            return stationsLineArray.count
         }
         return 0
     }
@@ -117,7 +118,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         if pickerView == issuePicker {
             return dataManager.issuesArray[row].objectForKey("issueName") as? String
         } else if pickerView == stationsPicker {
-            return dataManager.stationsArray[row].stationName as String
+            return stationsLineArray[row].stationName as String
         }
         return nil
     }
@@ -128,18 +129,91 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
             selectedIssue = dataManager.issuesArray[selection]
         } else if pickerView == stationsPicker {
             let selection = stationsPicker.selectedRowInComponent(0)
-            selectedStation = dataManager.stationsArray[selection]
+            selectedStation = stationsLineArray[selection]
         }
     }
     
     
     //MARK: - Button Methods
     
+    func filterDataForLine(line: String) {
+        let tempArray1 = dataManager.stationsArray.filter({$0.stationLine1 == line || $0.stationLine2 == line})
+        let tempArray2 = dataManager.stationsArray.filter({$0.stationLine3 == line || $0.stationLine4 == line})
+        stationsLineArray.removeAll()
+        stationsLineArray.appendContentsOf(tempArray1)
+        stationsLineArray.appendContentsOf(tempArray2)
+        stationsPicker.reloadAllComponents()
+    }
     
+    @IBAction func redButtonPressed(sender: UIButton)  {
+        sender.selected = true
+        blueButton.selected = !sender.selected
+        greenButton.selected = !sender.selected
+        orangeButton.selected = !sender.selected
+        silverButton.selected = !sender.selected
+        yellowButton.selected = !sender.selected
+        filterDataForLine("RD")
+    }
+    
+    @IBAction func blueButtonPressed(sender: UIButton)  {
+        sender.selected = true
+        redButton.selected = !sender.selected
+        greenButton.selected = !sender.selected
+        orangeButton.selected = !sender.selected
+        silverButton.selected = !sender.selected
+        yellowButton.selected = !sender.selected
+        filterDataForLine("BL")
+    }
+    
+    @IBAction func greenButtonPressed(sender: UIButton)  {
+        sender.selected = true
+        redButton.selected = !sender.selected
+        blueButton.selected = !sender.selected
+        orangeButton.selected = !sender.selected
+        silverButton.selected = !sender.selected
+        yellowButton.selected = !sender.selected
+        filterDataForLine("GR")
+    }
+    
+    @IBAction func silverButtonPressed(sender: UIButton)  {
+        sender.selected = true
+        redButton.selected = !sender.selected
+        greenButton.selected = !sender.selected
+        orangeButton.selected = !sender.selected
+        blueButton.selected = !sender.selected
+        yellowButton.selected = !sender.selected
+        filterDataForLine("SV")
+    }
+    
+    @IBAction func orangeButtonPressed(sender: UIButton)  {
+        sender.selected = true
+        redButton.selected = !sender.selected
+        greenButton.selected = !sender.selected
+        blueButton.selected = !sender.selected
+        silverButton.selected = !sender.selected
+        yellowButton.selected = !sender.selected
+        filterDataForLine("OR")
+    }
+    
+    @IBAction func yellowButtonPressed(sender: UIButton)  {
+        sender.selected = true
+        redButton.selected = !sender.selected
+        greenButton.selected = !sender.selected
+        orangeButton.selected = !sender.selected
+        silverButton.selected = !sender.selected
+        blueButton.selected = !sender.selected
+        filterDataForLine("YL")
+    }
+    
+    
+    
+    
+    
+
     func setRedButtonColor () {
         redButton.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
     }
- 
+    
     func setYellowColor () {
         yellowButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1.0)
     }
@@ -160,6 +234,8 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         silverButton.backgroundColor = UIColor(red: 161/255, green: 165/255, blue: 163/255, alpha: 1.0)
     }
     
+
+    
     
     //MARK: - Save to Parse Methods
     
@@ -168,7 +244,22 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         let issuesReported = PFObject (className: "IssueReported")
         issuesReported["Station"] = dataManager.stationsArray[stationsPicker.selectedRowInComponent(0)].stationName
         issuesReported["Issue"] = dataManager.issuesArray[issuePicker.selectedRowInComponent(0)]["issueName"]
-//        issuesReported["Line"] = 
+        var line = ""
+        if redButton.selected {
+            line = "RD"
+        } else if blueButton.selected {
+            line = "BL"
+        } else if greenButton.selected {
+            line = "GR"
+        } else if orangeButton.selected {
+            line = "OR"
+        } else if silverButton.selected {
+            line = "SV"
+        } else if yellowButton.selected {
+            line = "YL"
+        }
+        
+        issuesReported["Line"] = line
         issuesReported.saveInBackground()
         self.navigationController!.popToRootViewControllerAnimated(true)
     }
@@ -190,6 +281,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         dataManager.fetchIssuesFromParse()
+        filterDataForLine("RD")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newIssueDataReceived", name: "receivedIssueDataFromServer", object: nil)
         self.setBlueColor()
         self.setGreenColor()
@@ -212,7 +304,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        previewLayer!.frame = previewView.bounds
+//        previewLayer!.frame = previewView.bounds
     }
 
   
