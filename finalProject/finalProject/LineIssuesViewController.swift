@@ -7,31 +7,46 @@
 //
 
 import UIKit
+import Parse
+
 
 class LineIssuesViewController: UIViewController {
     
-    var currentLine :Stations!
+    var currentLine : String!
+    
+    
+    func fetchLineReportsFromParse(selectedLine: String) {
+        let fetchIssues = PFQuery(className: "IssueReported")
+        fetchIssues.whereKey("Line", matchesRegex: selectedLine)
+        
+        fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                print(objects)
+                print ("Got Line Data")
+                
+            }
+        }
+    }
+    
+
+    
+    
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchLineReportsFromParse(currentLine)
+        
 
-        // Do any additional setup after loading the view.
+      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+           }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+  
 }

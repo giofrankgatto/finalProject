@@ -21,6 +21,7 @@ class DataManager: NSObject {
     var trainsArray = [Trains]()
     var issuesArray = [PFObject]()
     var reportedIssuesArray = [PFObject]()
+    var reportedLineIssuesArray = [PFObject]()
     
     //MARK: - Get Data Methods
     
@@ -224,6 +225,23 @@ class DataManager: NSObject {
         
     }
     
+    func fetchRedLineReportsFromParse(selectedLine: String) {
+        let fetchIssues = PFQuery(className: "IssueReported")
+        fetchIssues.whereKey("Line", matchesRegex: "RD", modifiers: selectedLine)
+        fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                print(objects)
+                print ("Got Line Data")
+                self.reportedLineIssuesArray = objects!
+                dispatch_async(dispatch_get_main_queue()) {
+                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedLineIssueDataFromServer", object: nil))
+                    
+                }
+            }
+        }
+    }
+    
+  
     
     
     

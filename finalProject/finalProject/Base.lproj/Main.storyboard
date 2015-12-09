@@ -26,6 +26,20 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="TiW-bu-NVk"/>
                                 </connections>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaD-5y-da7">
+                                <rect key="frame" x="71" y="144" width="171" height="108"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="VuT-3b-c03"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kO-53-vBH">
+                                <rect key="frame" x="309" y="183" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="Ez4-5h-eTX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -48,7 +62,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="blueButton" destination="3kO-53-vBH" id="IhX-no-hsr"/>
                         <outlet property="loginButton" destination="bNN-zr-TBp" id="8Fc-rm-EOn"/>
+                        <outlet property="redButton" destination="JaD-5y-da7" id="udh-dI-NST"/>
                         <outlet property="stationMapView" destination="qJe-SN-WKv" id="2Fh-24-3BZ"/>
                         <segue destination="bQG-Fx-bdl" kind="show" identifier="segueStationDetail" id="x39-bO-LTy"/>
                     </connections>
@@ -56,6 +72,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1001" y="-339"/>
+        </scene>
+        <!--Line Issues View Controller-->
+        <scene sceneID="qTL-r8-RNi">
+            <objects>
+                <viewController id="Q3w-Rj-0E8" customClass="LineIssuesViewController" customModule="finalProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PHd-oT-Hdx"/>
+                        <viewControllerLayoutGuide type="bottom" id="KIh-Nf-uqJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LTC-UF-mtB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nv0-cI-D6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="441"/>
         </scene>
         <!--Title-->
         <scene sceneID="xgh-UM-qod">
@@ -508,7 +542,7 @@
                         <outlet property="greenButton" destination="yGE-QP-QRo" id="Rk2-ir-xQ4"/>
                         <outlet property="issuePicker" destination="hWd-H1-jWF" id="Blm-4p-wmF"/>
                         <outlet property="orangeButton" destination="Vsj-5n-83q" id="p2v-qT-K8l"/>
-                        <outlet property="previewView" destination="Ody-wE-xow" id="WwL-A1-WXX"/>
+                        <outlet property="previewView" destination="Ody-wE-xow" id="YPd-De-983"/>
                         <outlet property="redButton" destination="USS-5a-qVa" id="cND-jb-2Ys"/>
                         <outlet property="saveToParseButton" destination="KBp-p3-QPE" id="cUf-Vp-g8K"/>
                         <outlet property="silverButton" destination="z05-T4-XPf" id="oxH-pj-YGc"/>
@@ -539,4 +573,7 @@
             <point key="canvasLocation" x="270" y="-339"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VuT-3b-c03"/>
+    </inferredMetricsTieBreakers>
 </document>

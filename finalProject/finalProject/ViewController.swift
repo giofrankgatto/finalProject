@@ -20,10 +20,21 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     let dataManager = DataManager.sharedInstance
     var selectedStationName :String!
     var selectedTrainName :String!
+    var selectedLineName :String!
+    var senderLine : String!
+    
+    
+    
+    @IBOutlet weak var          redButton                   :UIButton!
+    @IBOutlet weak var          blueButton                  :UIButton!
+    @IBOutlet weak var          yellowButton                :UIButton!
+    @IBOutlet weak var          greenButton                 :UIButton!
+    @IBOutlet weak var          silverButton                :UIButton!
+    @IBOutlet weak var          orangeButton                :UIButton!
     
     
     @IBOutlet   weak var         stationMapView              :MKMapView!
-    @IBOutlet   var         loginButton                 :UIBarButtonItem!
+    @IBOutlet   var              loginButton                 :UIBarButtonItem!
     
     
     
@@ -187,15 +198,53 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         self.performSegueWithIdentifier("segueStationDetail", sender: self)
         print("segue to station")
     }
+    
 
     
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "segueStationDetail" {
             let destController = segue.destinationViewController as! StationInfoViewController
             destController.currentStation = dataManager.getStationWithName(selectedStationName)
             print(selectedStationName)
+        } else if segue.identifier == "segueLineIssue" {
+            let destController = segue.destinationViewController as! LineIssuesViewController
+            
+            redButton.tag = 1
+            blueButton.tag = 2
+            greenButton.tag = 3
+            orangeButton.tag = 4
+            silverButton.tag = 5
+            yellowButton.tag = 6
+            
+            switch sender!.tag {
+            case 1:
+                senderLine = "RD"
+            case 2:
+                senderLine = "BL"
+            case 3:
+                senderLine = "GR"
+            case 4:
+                senderLine = "OR"
+            case 5:
+                senderLine = "SV"
+            case 6:
+                senderLine = "YL"
+            default:
+                print("Not segueing")
+                
+                
+            }
+            
+            destController.currentLine = senderLine
+            
+            
+            
         }
     }
+   
     
     
 
@@ -238,11 +287,33 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 
 
     
+    func fetchLineReportsFromParse(selectedLine: String) {
+        let fetchIssues = PFQuery(className: "IssueReported")
+        fetchIssues.whereKey("Line", matchesRegex: selectedLine)
+        
+        fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                print(objects)
+                print ("Got Line Data")
+//                self.reportedLineIssuesArray = objects!
+//                dispatch_async(dispatch_get_main_queue()) {
+//                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedLineIssueDataFromServer", object: nil))
+//                    
+//                }
+            }
+        }
+    }
+    
+
+    
+    
+    
     
     //MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        fetchLineReportsFromParse("RD")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getStationList", name: "reachabilityChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "annotateMapLocations", name: "receivedStationListFromServer", object: nil)
         dataManager.getStationListFromServer()

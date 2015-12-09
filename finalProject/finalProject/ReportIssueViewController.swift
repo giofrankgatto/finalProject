@@ -304,7 +304,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        previewLayer!.frame = previewView.bounds
+        previewLayer!.frame = previewView.bounds
     }
 
   
