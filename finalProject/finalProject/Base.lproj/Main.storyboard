@@ -21,32 +21,88 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-SN-WKv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="526"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="TiW-bu-NVk"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JaD-5y-da7">
-                                <rect key="frame" x="71" y="144" width="171" height="108"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2KE-oN-OW2">
+                                <rect key="frame" x="0.0" y="524" width="100" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="fEJ-qg-1UN"/>
+                                    <constraint firstAttribute="width" constant="100" id="qmE-m1-JQX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="46"/>
+                                <state key="normal" title="B"/>
                                 <connections>
-                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="VuT-3b-c03"/>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="fce-EF-Fcl"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kO-53-vBH">
-                                <rect key="frame" x="309" y="183" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f1-Ii-dPM">
+                                <rect key="frame" x="100" y="524" width="100" height="76"/>
+                                <state key="normal" title="G"/>
                                 <connections>
-                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="Ez4-5h-eTX"/>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="IHe-8L-KAv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23V-jk-Ver">
+                                <rect key="frame" x="200" y="524" width="100" height="76"/>
+                                <state key="normal" title="o"/>
+                                <connections>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="VsL-Ax-K5V"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBc-Dw-YhU">
+                                <rect key="frame" x="300" y="524" width="100" height="76"/>
+                                <state key="normal" title="R\"/>
+                                <connections>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="T2M-SM-wja"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMF-LG-618">
+                                <rect key="frame" x="400" y="524" width="100" height="75"/>
+                                <state key="normal" title="S"/>
+                                <connections>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="A7b-yS-iiD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEo-VE-VTY">
+                                <rect key="frame" x="500" y="524" width="100" height="76"/>
+                                <state key="normal" title="Y"/>
+                                <connections>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="l13-79-1sA"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eMF-LG-618" firstAttribute="width" secondItem="2KE-oN-OW2" secondAttribute="height" multiplier="25:19" id="3aA-HM-x67"/>
                             <constraint firstAttribute="trailing" secondItem="qJe-SN-WKv" secondAttribute="trailing" id="3el-rK-gIZ"/>
+                            <constraint firstItem="6f1-Ii-dPM" firstAttribute="leading" secondItem="2KE-oN-OW2" secondAttribute="trailing" id="6sM-09-fA4"/>
+                            <constraint firstItem="eMF-LG-618" firstAttribute="top" secondItem="qJe-SN-WKv" secondAttribute="bottom" constant="-2" id="8Md-Y3-qdb"/>
                             <constraint firstItem="qJe-SN-WKv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="97r-Xr-tPw"/>
-                            <constraint firstItem="qJe-SN-WKv" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Pw2-4d-fUB"/>
+                            <constraint firstItem="eMF-LG-618" firstAttribute="leading" secondItem="yBc-Dw-YhU" secondAttribute="trailing" id="9Kz-qG-xXd"/>
+                            <constraint firstItem="yBc-Dw-YhU" firstAttribute="width" secondItem="2KE-oN-OW2" secondAttribute="height" multiplier="25:19" id="AhH-mV-mGf"/>
+                            <constraint firstItem="TEo-VE-VTY" firstAttribute="top" secondItem="qJe-SN-WKv" secondAttribute="bottom" constant="-2" id="Dbj-LL-14Z"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="eMF-LG-618" secondAttribute="bottom" constant="1" id="F2D-aO-xW4"/>
+                            <constraint firstItem="23V-jk-Ver" firstAttribute="leading" secondItem="6f1-Ii-dPM" secondAttribute="trailing" id="IzW-2Q-m8f"/>
+                            <constraint firstItem="yBc-Dw-YhU" firstAttribute="leading" secondItem="23V-jk-Ver" secondAttribute="trailing" id="Pbv-R8-o59"/>
                             <constraint firstItem="qJe-SN-WKv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="RG2-kG-aPu"/>
+                            <constraint firstItem="6f1-Ii-dPM" firstAttribute="top" secondItem="qJe-SN-WKv" secondAttribute="bottom" constant="-2" id="SKH-pS-9tG"/>
+                            <constraint firstItem="2KE-oN-OW2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="SdJ-IV-4nO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2KE-oN-OW2" secondAttribute="bottom" id="W3r-YO-6iF"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="6f1-Ii-dPM" secondAttribute="bottom" id="aVg-J2-NCM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TEo-VE-VTY" secondAttribute="trailing" constant="-20" id="ceB-HA-Tv4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="23V-jk-Ver" secondAttribute="bottom" id="dNM-0a-71S"/>
+                            <constraint firstItem="23V-jk-Ver" firstAttribute="width" secondItem="2KE-oN-OW2" secondAttribute="height" multiplier="25:19" id="fMa-XG-zFc"/>
+                            <constraint firstItem="2KE-oN-OW2" firstAttribute="top" secondItem="qJe-SN-WKv" secondAttribute="bottom" constant="-2" id="iwp-jX-Uah"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TEo-VE-VTY" secondAttribute="bottom" id="lpX-Fa-1C9"/>
+                            <constraint firstItem="TEo-VE-VTY" firstAttribute="leading" secondItem="eMF-LG-618" secondAttribute="trailing" id="m8O-MK-K9I"/>
+                            <constraint firstItem="6f1-Ii-dPM" firstAttribute="width" secondItem="2KE-oN-OW2" secondAttribute="height" multiplier="25:19" id="pYS-Mr-am2"/>
+                            <constraint firstItem="yBc-Dw-YhU" firstAttribute="top" secondItem="qJe-SN-WKv" secondAttribute="bottom" constant="-2" id="qwS-nC-MMZ"/>
+                            <constraint firstItem="TEo-VE-VTY" firstAttribute="width" secondItem="2KE-oN-OW2" secondAttribute="height" multiplier="25:19" id="r4B-na-PKe"/>
+                            <constraint firstItem="23V-jk-Ver" firstAttribute="top" secondItem="qJe-SN-WKv" secondAttribute="bottom" constant="-2" id="uGF-Pq-bm8"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="yBc-Dw-YhU" secondAttribute="bottom" id="wyl-w4-7GS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="acO-Om-2Ek">
@@ -62,10 +118,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="blueButton" destination="3kO-53-vBH" id="IhX-no-hsr"/>
+                        <outlet property="blueButton" destination="2KE-oN-OW2" id="o2d-6I-AEV"/>
+                        <outlet property="greenButton" destination="6f1-Ii-dPM" id="VPx-43-Sd4"/>
                         <outlet property="loginButton" destination="bNN-zr-TBp" id="8Fc-rm-EOn"/>
-                        <outlet property="redButton" destination="JaD-5y-da7" id="udh-dI-NST"/>
+                        <outlet property="orangeButton" destination="23V-jk-Ver" id="RDh-G3-JIo"/>
+                        <outlet property="redButton" destination="yBc-Dw-YhU" id="TLl-Hi-A8S"/>
+                        <outlet property="silverButton" destination="eMF-LG-618" id="yaZ-Pg-wkJ"/>
                         <outlet property="stationMapView" destination="qJe-SN-WKv" id="2Fh-24-3BZ"/>
+                        <outlet property="yellowButton" destination="TEo-VE-VTY" id="fms-lt-QiH"/>
                         <segue destination="bQG-Fx-bdl" kind="show" identifier="segueStationDetail" id="x39-bO-LTy"/>
                     </connections>
                 </viewController>
@@ -84,12 +144,34 @@
                     <view key="view" contentMode="scaleToFill" id="LTC-UF-mtB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Ja-G1-bDx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yT9-4p-kgT">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yT9-4p-kgT" id="gDj-dT-uLb">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5Ja-G1-bDx" firstAttribute="leading" secondItem="LTC-UF-mtB" secondAttribute="leadingMargin" constant="-20" id="0mC-sb-BXe"/>
+                            <constraint firstItem="KIh-Nf-uqJ" firstAttribute="top" secondItem="5Ja-G1-bDx" secondAttribute="bottom" id="Deo-nn-vNT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5Ja-G1-bDx" secondAttribute="trailing" constant="-20" id="NLx-RW-6sc"/>
+                            <constraint firstItem="5Ja-G1-bDx" firstAttribute="top" secondItem="PHd-oT-Hdx" secondAttribute="bottom" constant="-64" id="S4n-RU-5J2"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nv0-cI-D6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="438" y="441"/>
+            <point key="canvasLocation" x="1001" y="477"/>
         </scene>
         <!--Title-->
         <scene sceneID="xgh-UM-qod">
@@ -574,6 +656,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VuT-3b-c03"/>
+        <segue reference="T2M-SM-wja"/>
     </inferredMetricsTieBreakers>
 </document>
