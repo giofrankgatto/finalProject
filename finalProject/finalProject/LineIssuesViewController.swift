@@ -42,11 +42,32 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
         let currentIssues = dataManager.reportedLineIssuesArray[indexPath.row]
         
         cell.stationNameLabel.text = (currentIssues["Station"] as! String)
+        cell.issueNameLabel.text = (currentIssues["Issue"] as! String)
         
-        return cell
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "hh:ss a"
+        let stringDate = formatter.stringFromDate(currentIssues.createdAt!)
+        cell.timeReportedLabel.text = stringDate
         
-    }
+        
+        //        cell.timeReportedLabel.text = (currentIssues["createdAt"] as! String)
+        
+        //do if let for image
+        if let reportIssueImage = (currentIssues["imageFile"] as? PFFile)  {
+            reportIssueImage.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let _ = imageData {
+                        cell.issueImageView = UIImageView()
+                    }
+                }
+            }
+            
+        }
+            return cell
+            
     
+    }
     
     func gotLineIssuesData () {
         lineIssuesCollectionView.reloadData()
@@ -64,6 +85,7 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
         
         fetchLineReportsFromParse(currentLine)
         print("RLIACount \(dataManager.reportedLineIssuesArray.count)")
+        lineIssuesCollectionView.reloadData()
 
       
     }
