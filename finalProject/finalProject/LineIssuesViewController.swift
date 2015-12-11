@@ -50,23 +50,27 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
         cell.timeReportedLabel.text = stringDate
         
         
-        //        cell.timeReportedLabel.text = (currentIssues["createdAt"] as! String)
-        
-        //do if let for image
-        if let reportIssueImage = (currentIssues["imageFile"] as? PFFile)  {
-            reportIssueImage.getDataInBackgroundWithBlock {
-                (imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    if let _ = imageData {
-                        cell.issueImageView = UIImageView()
-                    }
+        let userImageFile = currentIssues["imageFile"] as! PFFile
+        userImageFile.getDataInBackgroundWithBlock {
+            (imageData: NSData?, error: NSError?) -> Void in
+            if error == nil {
+                if let imageData = imageData {
+                    cell.issueImageView.image = UIImage(data:imageData)
                 }
             }
-            
         }
+
+//        if let reportIssueImage = (currentIssues["imageFile"] as? PFFile)  {
+//            cell.issueImageView = UIImageView()
+//            reportIssueImage.getDataInBackgroundWithBlock {
+//                (imageData: NSData?, error: NSError?) -> Void in
+//                if error == nil {
+//                    if let _ = imageData {
+//                        cell.issueImageView = UIImageView()
+//                    }
+//                }
+//            }
             return cell
-            
-    
     }
     
     func gotLineIssuesData () {

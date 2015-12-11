@@ -265,6 +265,8 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         if let imageCaptured = capturedImage.image {
             let imageData = UIImageJPEGRepresentation(imageCaptured, 1.0)
             let imageFile = PFFile(name:"image1.png", data:imageData!)
+            
+            
             issuesReported["imageFile"] = imageFile
         }
         
