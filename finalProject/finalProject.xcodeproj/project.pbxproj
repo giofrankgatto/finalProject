@@ -11,6 +11,7 @@
 		8F5C59281C0F44F000CECCBA /* StationInfoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C59261C0F44F000CECCBA /* StationInfoList.xcdatamodeld */; };
 		8F5C59301C0F5B0100CECCBA /* MetroStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C592E1C0F5B0100CECCBA /* MetroStation+CoreDataProperties.swift */; };
 		8F5C59311C0F5B0100CECCBA /* MetroStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C592F1C0F5B0100CECCBA /* MetroStation.swift */; };
+		8F6319A21C1B1D9100B0A619 /* LineIssuesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6319A11C1B1D9100B0A619 /* LineIssuesCollectionViewCell.swift */; };
 		8F81ADA21C0C984A00D29A1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F81ADA11C0C984A00D29A1E /* AppDelegate.swift */; };
 		8F81ADA41C0C984A00D29A1E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F81ADA31C0C984A00D29A1E /* ViewController.swift */; };
 		8F81ADA71C0C984A00D29A1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F81ADA51C0C984A00D29A1E /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 		8F5C59271C0F44F000CECCBA /* StationInfoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StationInfoList.xcdatamodel; sourceTree = "<group>"; };
 		8F5C592E1C0F5B0100CECCBA /* MetroStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MetroStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8F5C592F1C0F5B0100CECCBA /* MetroStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetroStation.swift; sourceTree = "<group>"; };
+		8F6319A11C1B1D9100B0A619 /* LineIssuesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineIssuesCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F81AD9E1C0C984A00D29A1E /* finalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = finalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F81ADA11C0C984A00D29A1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F81ADA31C0C984A00D29A1E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				8F81ADA11C0C984A00D29A1E /* AppDelegate.swift */,
 				8F81ADA31C0C984A00D29A1E /* ViewController.swift */,
 				8FFC08181C172057009C6152 /* LineIssuesViewController.swift */,
+				8F6319A11C1B1D9100B0A619 /* LineIssuesCollectionViewCell.swift */,
 				8F81ADC21C0CEFED00D29A1E /* ReportIssueViewController.swift */,
 				8FB34E621C11EAEA00E9B361 /* StationInfoViewController.swift */,
 				8F235AD61C15E42600E15358 /* TrainTableViewCell.swift */,
@@ -276,6 +279,7 @@
 				8FB34E631C11EAEA00E9B361 /* StationInfoViewController.swift in Sources */,
 				8FB34E671C1214EB00E9B361 /* Stations.swift in Sources */,
 				8F5C59311C0F5B0100CECCBA /* MetroStation.swift in Sources */,
+				8F6319A21C1B1D9100B0A619 /* LineIssuesCollectionViewCell.swift in Sources */,
 				8FB34E651C11FF8900E9B361 /* StationTableViewCell.swift in Sources */,
 				8F81ADB41C0C987400D29A1E /* NetworkManager.swift in Sources */,
 				8F81ADBB1C0C999900D29A1E /* DataManager.swift in Sources */,

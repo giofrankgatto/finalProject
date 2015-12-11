@@ -239,10 +239,11 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     
     //MARK: - Save to Parse Methods
     
+   
     
     @IBAction func saveToParse(sender: UIBarButtonItem) {
         let issuesReported = PFObject (className: "IssueReported")
-        issuesReported["Station"] = dataManager.stationsArray[stationsPicker.selectedRowInComponent(0)].stationName
+        issuesReported["Station"] = stationsLineArray[stationsPicker.selectedRowInComponent(0)].stationName
         issuesReported["Issue"] = dataManager.issuesArray[issuePicker.selectedRowInComponent(0)]["issueName"]
         var line = ""
         if redButton.selected {
@@ -260,7 +261,16 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         issuesReported["Line"] = line
+        
+        if let imageCaptured = capturedImage.image {
+            let imageData = UIImageJPEGRepresentation(imageCaptured, 1.0)
+            let imageFile = PFFile(name:"image1.png", data:imageData!)
+            issuesReported["imageFile"] = imageFile
+        }
+        
         issuesReported.saveInBackground()
+        
+        
         self.navigationController!.popToRootViewControllerAnimated(true)
     }
     

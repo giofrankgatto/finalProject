@@ -28,49 +28,72 @@
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2KE-oN-OW2">
                                 <rect key="frame" x="0.0" y="524" width="100" height="76"/>
+                                <color key="backgroundColor" red="0.18431372939999999" green="0.1411764771" blue="0.98039221759999995" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="76" id="fEJ-qg-1UN"/>
                                     <constraint firstAttribute="width" constant="100" id="qmE-m1-JQX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="46"/>
-                                <state key="normal" title="B"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="35"/>
+                                <state key="normal" title="B">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="fce-EF-Fcl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6f1-Ii-dPM">
                                 <rect key="frame" x="100" y="524" width="100" height="76"/>
-                                <state key="normal" title="G"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="35"/>
+                                <state key="normal" title="G">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="IHe-8L-KAv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23V-jk-Ver">
                                 <rect key="frame" x="200" y="524" width="100" height="76"/>
-                                <state key="normal" title="o"/>
+                                <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="35"/>
+                                <state key="normal" title="O">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="VsL-Ax-K5V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBc-Dw-YhU">
                                 <rect key="frame" x="300" y="524" width="100" height="76"/>
-                                <state key="normal" title="R\"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="35"/>
+                                <state key="normal" title="R">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="T2M-SM-wja"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMF-LG-618">
-                                <rect key="frame" x="400" y="524" width="100" height="75"/>
-                                <state key="normal" title="S"/>
-                                <connections>
-                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="A7b-yS-iiD"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEo-VE-VTY">
                                 <rect key="frame" x="500" y="524" width="100" height="76"/>
-                                <state key="normal" title="Y"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="35"/>
+                                <state key="normal" title="Y">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="l13-79-1sA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eMF-LG-618">
+                                <rect key="frame" x="400" y="524" width="100" height="75"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.23999999999999999" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="35"/>
+                                <state key="normal" title="S">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Q3w-Rj-0E8" kind="show" identifier="segueLineIssue" id="A7b-yS-iiD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -145,29 +168,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5Ja-G1-bDx">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7gw-pI-bie">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="yT9-4p-kgT">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yT9-4p-kgT" id="gDj-dT-uLb">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hMK-TJ-jZv">
+                                    <size key="itemSize" width="596.5" height="204"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="QYO-B8-i30" customClass="LineIssuesCollectionViewCell" customModule="finalProject" customModuleProvider="target">
+                                        <rect key="frame" x="2" y="64" width="596.5" height="204"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="596.5" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-0U-OTI">
+                                                    <rect key="frame" x="49" y="168" width="173" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="oxK-gM-aQ2"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="qaT-0U-OTI" firstAttribute="leading" secondItem="QYO-B8-i30" secondAttribute="leadingMargin" constant="41" id="7iT-Gj-aD5"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="qaT-0U-OTI" secondAttribute="trailing" constant="366.5" id="aR2-X4-pm8"/>
+                                            <constraint firstItem="qaT-0U-OTI" firstAttribute="top" secondItem="QYO-B8-i30" secondAttribute="topMargin" constant="160" id="eT1-HO-VnU"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="stationNameLabel" destination="qaT-0U-OTI" id="1tQ-eu-gAD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Q3w-Rj-0E8" id="GuD-3X-vw6"/>
+                                    <outlet property="delegate" destination="Q3w-Rj-0E8" id="8uL-iX-dK8"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5Ja-G1-bDx" firstAttribute="leading" secondItem="LTC-UF-mtB" secondAttribute="leadingMargin" constant="-20" id="0mC-sb-BXe"/>
-                            <constraint firstItem="KIh-Nf-uqJ" firstAttribute="top" secondItem="5Ja-G1-bDx" secondAttribute="bottom" id="Deo-nn-vNT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="5Ja-G1-bDx" secondAttribute="trailing" constant="-20" id="NLx-RW-6sc"/>
-                            <constraint firstItem="5Ja-G1-bDx" firstAttribute="top" secondItem="PHd-oT-Hdx" secondAttribute="bottom" constant="-64" id="S4n-RU-5J2"/>
+                            <constraint firstItem="7gw-pI-bie" firstAttribute="leading" secondItem="LTC-UF-mtB" secondAttribute="leadingMargin" constant="-20" id="8b1-Zj-7Q4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7gw-pI-bie" secondAttribute="trailing" constant="-20" id="9bI-bs-hsm"/>
+                            <constraint firstItem="KIh-Nf-uqJ" firstAttribute="top" secondItem="7gw-pI-bie" secondAttribute="bottom" id="Sma-zg-bHB"/>
+                            <constraint firstItem="7gw-pI-bie" firstAttribute="top" secondItem="PHd-oT-Hdx" secondAttribute="bottom" constant="-64" id="o3M-nY-Egc"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="lineIssuesCollectionView" destination="7gw-pI-bie" id="kwY-VW-1cB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nv0-cI-D6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -120,6 +120,7 @@ class DataManager: NSObject {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
             print("JSON:\(jsonResult)")
+            stationsArray.removeAll()
             let stationListArray = jsonResult.objectForKey("Stations") as! [NSDictionary]
             for station in stationListArray {
                 let stationListInfo = Stations ()
@@ -225,9 +226,9 @@ class DataManager: NSObject {
         
     }
     
-    func fetchRedLineReportsFromParse(selectedLine: String) {
+    func fetchLineReportsFromParse(selectedLine: String) {
         let fetchIssues = PFQuery(className: "IssueReported")
-        fetchIssues.whereKey("Line", matchesRegex: "RD", modifiers: selectedLine)
+        fetchIssues.whereKey("Line", matchesRegex: selectedLine)
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
                 print(objects)
