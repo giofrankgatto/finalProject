@@ -61,7 +61,6 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
         }
 
 //        if let reportIssueImage = (currentIssues["imageFile"] as? PFFile)  {
-//            cell.issueImageView = UIImageView()
 //            reportIssueImage.getDataInBackgroundWithBlock {
 //                (imageData: NSData?, error: NSError?) -> Void in
 //                if error == nil {
