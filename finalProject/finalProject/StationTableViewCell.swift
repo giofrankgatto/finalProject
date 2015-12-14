@@ -11,5 +11,7 @@ import UIKit
 class StationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var          issueNameLabel      :UILabel!
+    @IBOutlet weak var          timePostedLabel     :UILabel!
+    @IBOutlet weak var          issueImage          :UIImageView!
 
 }

@@ -22,16 +22,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     var selectedTrainName :String!
     var selectedLineName :String!
     var senderLine : String!
-    
-    
-    
-    @IBOutlet weak var          redButton                   :UIButton!
-    @IBOutlet weak var          blueButton                  :UIButton!
-    @IBOutlet weak var          yellowButton                :UIButton!
-    @IBOutlet weak var          greenButton                 :UIButton!
-    @IBOutlet weak var          silverButton                :UIButton!
-    @IBOutlet weak var          orangeButton                :UIButton!
-    
+
     
     @IBOutlet   weak var         stationMapView              :MKMapView!
     @IBOutlet   var              loginButton                 :UIBarButtonItem!
@@ -57,6 +48,16 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     }
     
     //MARK: - Login Methods
+    
+    func updateLoginButtonDisplay() {
+        if let _ = PFUser.currentUser() {
+            print("\(PFUser.currentUser()!.username) is logged IN")
+            loginButton.title = "Logout"
+        } else {
+            print("NO ONE is logged IN")
+            loginButton.title = "Login"
+        }
+    }
     
     @IBAction func loginButtonPressed (sender: UIBarButtonItem) {
         print("Login Button Pressed")
@@ -96,6 +97,18 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
 
     
+    
+    @IBAction func newReportButtonPressed (sender: UIBarButtonItem) {
+        if (PFUser.currentUser() != nil) {
+            performSegueWithIdentifier("segueNewReport", sender: self)
+        } else {
+            let alert = UIAlertController(title: "You are not logged in!", message: "In order to report an issue, you must be logged in.  Please do so now!", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Login", style: .Default, handler: { (action) -> Void in
+                self.loginButtonPressed(self.loginButton)
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
     
    
     
@@ -199,7 +212,25 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         print("segue to station")
     }
     
-
+    @IBAction func lineButtonPressed(button: UIButton) {
+        switch button.tag {
+        case 1:
+            senderLine = "RD"
+        case 2:
+            senderLine = "BL"
+        case 3:
+            senderLine = "GR"
+        case 4:
+            senderLine = "OR"
+        case 5:
+            senderLine = "SV"
+        case 6:
+            senderLine = "YL"
+        default:
+            print("Not segueing")
+        }
+        performSegueWithIdentifier("segueLineIssue", sender: self)
+    }
     
     
     
@@ -211,37 +242,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             print(selectedStationName)
         } else if segue.identifier == "segueLineIssue" {
             let destController = segue.destinationViewController as! LineIssuesViewController
-            
-            redButton.tag = 1
-            blueButton.tag = 2
-            greenButton.tag = 3
-            orangeButton.tag = 4
-            silverButton.tag = 5
-            yellowButton.tag = 6
-            
-            switch sender!.tag {
-            case 1:
-                senderLine = "RD"
-            case 2:
-                senderLine = "BL"
-            case 3:
-                senderLine = "GR"
-            case 4:
-                senderLine = "OR"
-            case 5:
-                senderLine = "SV"
-            case 6:
-                senderLine = "YL"
-            default:
-                print("Not segueing")
-                
-                
-            }
-            
             destController.currentLine = senderLine
-            
-            
-            
         }
     }
    
@@ -269,21 +270,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     }
 
     
-//    //MARK: - Core Data Methods
-//    
-//    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//    let managedObjectContext :NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-//    var stationsArray = [MetroStation] ()
-//    
-//    func tempAddRecords () {
-//        let entityDescription : NSEntityDescription! = NSEntityDescription.entityForName("MetroStation", inManagedObjectContext: managedObjectContext)
-//        let currentStation : MetroStation! = MetroStation(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
-//        
-//        currentStation.stationName = "Addison Road-Seat Pleasant"
-//        currentStation.stationLine1 = "Silver"
-//        currentStation.stationLine2 = "Blue"
-//        currentStation.stationLat = "38.886713"
-//        currentStation.stationLon = "-76.893592"
 
 
     
@@ -306,9 +292,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
 
     
-    
-    
-    
     //MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
@@ -323,6 +306,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         setupLocationMonitoring()
+        updateLoginButtonDisplay()
     }
 
     override func didReceiveMemoryWarning() {

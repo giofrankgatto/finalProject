@@ -16,6 +16,8 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
     let dataManager = DataManager.sharedInstance
     
     @IBOutlet weak var          lineIssuesCollectionView            :UICollectionView!
+    @IBOutlet weak var          noIssuesLabel                       :UILabel!
+    
     
     
     func fetchLineReportsFromParse(selectedLine: String) {
@@ -39,7 +41,12 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! LineIssuesCollectionViewCell
+        
+       
+        
         let currentIssues = dataManager.reportedLineIssuesArray[indexPath.row]
+        
+        
         
         cell.stationNameLabel.text = (currentIssues["Station"] as! String)
         cell.issueNameLabel.text = (currentIssues["Issue"] as! String)
@@ -59,16 +66,7 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
                 }
             }
         }
-
-//        if let reportIssueImage = (currentIssues["imageFile"] as? PFFile)  {
-//            reportIssueImage.getDataInBackgroundWithBlock {
-//                (imageData: NSData?, error: NSError?) -> Void in
-//                if error == nil {
-//                    if let _ = imageData {
-//                        cell.issueImageView = UIImageView()
-//                    }
-//                }
-//            }
+        
             return cell
     }
     
@@ -77,11 +75,31 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     
+    func noDataToShow () {
+        if dataManager.reportedLineIssuesArray.count == 0 {
+            self.noIssuesLabel.text = "There are no current reports for this line!"
+        }
+    }
+    
     
     //MARK: - Life Cycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if currentLine == "RD" {
+            self.title = "Red Line"
+        } else if currentLine == "BL" {
+            self.title = "Blue Line"
+        } else if currentLine == "GR" {
+            self.title = "Green Line"
+        } else if currentLine == "OR" {
+            self.title = "Orange Line"
+        } else if currentLine == "SV" {
+            self.title = "Silver Line"
+        } else if currentLine == "YL" {
+            self.title = "Yellow Line"
+        }
+        
         dataManager.fetchLineReportsFromParse(currentLine)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotLineIssuesData", name: "receivedLineIssueDataFromServer", object: nil)

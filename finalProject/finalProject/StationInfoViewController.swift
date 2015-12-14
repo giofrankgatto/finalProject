@@ -37,6 +37,23 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! StationTableViewCell
             let currentIssue = dataManager.reportedIssuesArray[indexPath.row]
             cell.issueNameLabel!.text = (currentIssue["Issue"] as! String)
+            
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "hh:ss a"
+            let stringDate = formatter.stringFromDate(currentIssue.createdAt!)
+            cell.timePostedLabel.text = stringDate
+            
+            
+            let userImageFile = currentIssue["imageFile"] as! PFFile
+            userImageFile.getDataInBackgroundWithBlock {
+                (imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData {
+                        cell.issueImage.image = UIImage(data:imageData)
+                    }
+                }
+            }
+            
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TrainTableViewCell
