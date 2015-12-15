@@ -27,6 +27,10 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet var      silverButton            :UIButton!
     @IBOutlet var      yellowButton            :UIButton!
     
+    @IBOutlet weak var selectLineLabel       :UILabel!
+    @IBOutlet weak var selectStationLabel   :UILabel!
+    @IBOutlet weak var selectIssueLabel     :UILabel!
+    
 
 
     //MARK: - Camera Methods
@@ -119,6 +123,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
             return dataManager.issuesArray[row].objectForKey("issueName") as? String
         } else if pickerView == stationsPicker {
             return stationsLineArray[row].stationName as String
+            
         }
         return nil
     }
@@ -152,6 +157,15 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
+        self.selectLineLabel.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
+        self.selectLineLabel.textColor = UIColor.whiteColor()
+        self.selectStationLabel.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
+        self.selectStationLabel.textColor = UIColor.whiteColor()
+        self.selectIssueLabel.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
+        self.selectIssueLabel.textColor = UIColor.whiteColor()
+        
+        
+        
         filterDataForLine("RD")
     }
     
@@ -162,6 +176,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
+        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
+        self.selectLineLabel.textColor = UIColor.whiteColor()
+        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
+        self.selectStationLabel.textColor = UIColor.whiteColor()
+        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
+        self.selectIssueLabel.textColor = UIColor.whiteColor()
+
         filterDataForLine("BL")
     }
     
@@ -172,6 +193,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
+        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 89/255, alpha: 1.0)
+        self.selectLineLabel.textColor = UIColor.whiteColor()
+        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 89/255, alpha: 1.0)
+        self.selectStationLabel.textColor = UIColor.whiteColor()
+        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 89/255, alpha: 1.0)
+        self.selectIssueLabel.textColor = UIColor.whiteColor()
+
         filterDataForLine("GR")
     }
     
@@ -182,6 +210,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         blueButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
+        self.selectLineLabel.backgroundColor = UIColor(red: 161/255, green: 165/255, blue: 163/255, alpha: 1.0)
+        self.selectLineLabel.textColor = UIColor.whiteColor()
+        self.selectStationLabel.backgroundColor = UIColor(red: 161/255, green: 165/255, blue: 163/255, alpha: 1.0)
+        self.selectStationLabel.textColor = UIColor.whiteColor()
+        self.selectIssueLabel.backgroundColor = UIColor(red: 161/255, green: 165/255, blue: 163/255, alpha: 1.0)
+        self.selectIssueLabel.textColor = UIColor.whiteColor()
+        
         filterDataForLine("SV")
     }
     
@@ -192,6 +227,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         blueButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
+        self.selectLineLabel.backgroundColor = UIColor(red: 248/255, green: 151/255, blue: 29/255, alpha: 1.0)
+        self.selectLineLabel.textColor = UIColor.whiteColor()
+        self.selectStationLabel.backgroundColor = UIColor(red: 248/255, green: 151/255, blue: 29/255, alpha: 1.0)
+        self.selectStationLabel.textColor = UIColor.whiteColor()
+        self.selectIssueLabel.backgroundColor = UIColor(red: 248/255, green: 151/255, blue: 29/255, alpha: 1.0)
+        self.selectIssueLabel.textColor = UIColor.whiteColor()
+        
         filterDataForLine("OR")
     }
     
@@ -202,6 +244,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         blueButton.selected = !sender.selected
+        self.selectLineLabel.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1.0)
+        self.selectLineLabel.textColor = UIColor.whiteColor()
+        self.selectStationLabel.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1.0)
+        self.selectStationLabel.textColor = UIColor.whiteColor()
+        self.selectIssueLabel.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1.0)
+        self.selectIssueLabel.textColor = UIColor.whiteColor()
+        
         filterDataForLine("YL")
     }
     
