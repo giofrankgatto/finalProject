@@ -291,6 +291,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
    
     
     @IBAction func saveToParse(sender: UIBarButtonItem) {
+    
         let issuesReported = PFObject (className: "IssueReported")
         issuesReported["Station"] = stationsLineArray[stationsPicker.selectedRowInComponent(0)].stationName
         issuesReported["Issue"] = dataManager.issuesArray[issuePicker.selectedRowInComponent(0)]["issueName"]
