@@ -122,7 +122,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         let currentLocation = locationManager.location!.coordinate
         print(currentLocation)
         let center = CLLocationCoordinate2DMake(currentLocation.latitude, currentLocation.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         map.setRegion(region, animated: true)
     }
     
@@ -188,11 +188,12 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             return nil
         } else {
             let identifier = "pin"
-            var pin = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier) as? MKPinAnnotationView
+            var pin = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
             if pin == nil {
-                pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+                pin = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 pin!.canShowCallout = true
-                pin!.pinTintColor = UIColor.blueColor()
+                pin!.image = UIImage(named: "metropin")
+//                pin!.pinTintColor = UIColor.blackColor()
                 pin!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             }
             pin!.annotation = annotation

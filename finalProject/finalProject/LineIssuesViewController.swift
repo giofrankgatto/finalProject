@@ -42,8 +42,6 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! LineIssuesCollectionViewCell
         
-       
-        
         let currentIssues = dataManager.reportedLineIssuesArray[indexPath.row]
         
         
@@ -71,13 +69,11 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func gotLineIssuesData () {
-        lineIssuesCollectionView.reloadData()
-    }
-    
-    
-    func noDataToShow () {
         if dataManager.reportedLineIssuesArray.count == 0 {
-            self.noIssuesLabel.text = "There are no current reports for this line!"
+            lineIssuesCollectionView.hidden = true
+        } else {
+            lineIssuesCollectionView.hidden = false
+            lineIssuesCollectionView.reloadData()
         }
     }
     
