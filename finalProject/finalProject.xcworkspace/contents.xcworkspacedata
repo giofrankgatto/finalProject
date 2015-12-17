@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:finalProject/Antonio-Bold.ttf">
+   </FileRef>
+   <FileRef
+      location = "group:finalProject/Antonio-Regular.ttf">
+   </FileRef>
+   <FileRef
       location = "group:finalProject.xcodeproj">
    </FileRef>
    <FileRef

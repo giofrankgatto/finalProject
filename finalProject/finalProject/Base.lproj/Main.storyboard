@@ -27,10 +27,11 @@
             <string>Antonio-Regular</string>
             <string>Antonio-Regular</string>
             <string>Antonio-Regular</string>
+            <string>Antonio-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--metroLIVE-->
+        <!--TRAZE-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="finalProject" customModuleProvider="target" sceneMemberID="viewController">
@@ -117,7 +118,7 @@
                             <constraint firstItem="qJe-SN-WKv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="xX0-YA-scu"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="metroLIVE" id="acO-Om-2Ek">
+                    <navigationItem key="navigationItem" title="TRAZE" id="acO-Om-2Ek">
                         <barButtonItem key="leftBarButtonItem" title="Login" id="bNN-zr-TBp">
                             <connections>
                                 <action selector="loginButtonPressed:" destination="BYZ-38-t0r" id="Qp1-kz-E88"/>
@@ -153,12 +154,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no reported issues for this line" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZY-09-jC6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There are no current reported issues for the selected line." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vZY-09-jC6">
                                 <rect key="frame" x="0.0" y="64" width="600" height="346"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="346" id="MnT-5e-Kph"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Antonio-Regular" family="Antonio" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -359,8 +360,9 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="   NEXT TRAIN INFO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jni-fA-jcx">
                                 <rect key="frame" x="0.0" y="64" width="600" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.00020964316330000001" blue="0.30409564389999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Antonio-Regular" family="Antonio" pointSize="23"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="67" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jLf-IU-kSq">
@@ -522,8 +524,9 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="   CURRENT REPORTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQk-AE-6Re">
                                 <rect key="frame" x="0.0" y="318" width="600" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.00020964316330000001" blue="0.30409564389999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="Antonio-Regular" family="Antonio" pointSize="23"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
