@@ -300,7 +300,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 //        fetchLineReportsFromParse("RD")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getStationList", name: "reachabilityChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "annotateMapLocations", name: "receivedStationListFromServer", object: nil)
-        dataManager.getStationListFromServer()
+//        dataManager.getStationListFromServer()
         dataManager.fetchIssuesFromParse()
     }
     

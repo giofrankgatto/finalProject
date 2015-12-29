@@ -87,6 +87,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
                     
                     let image = UIImage(CGImage: cgImageRef!, scale: 1.0, orientation: .Right)
                     self.capturedImage.image = image
+                    self.saveToParseButton.enabled = true
                 }
             })
         }
@@ -163,8 +164,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         self.selectStationLabel.textColor = UIColor.whiteColor()
         self.selectIssueLabel.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
         self.selectIssueLabel.textColor = UIColor.whiteColor()
-        
-        
+        self.view.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
         
         filterDataForLine("RD")
     }
@@ -176,12 +176,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
-        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
+        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
         self.selectLineLabel.textColor = UIColor.whiteColor()
-        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
+        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
         self.selectStationLabel.textColor = UIColor.whiteColor()
-        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
+        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
         self.selectIssueLabel.textColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
 
         filterDataForLine("BL")
     }
@@ -259,29 +260,29 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     
     
 
-    func setRedButtonColor () {
-        redButton.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
-    }
-    
-    func setYellowColor () {
-        yellowButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1.0)
-    }
-    
-    func setOrangeColor () {
-        orangeButton.backgroundColor = UIColor(red: 248/255, green: 151/255, blue: 29/255, alpha: 1.0)
-    }
-    
-    func setGreenColor () {
-        greenButton.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 89/255, alpha: 1.0)
-    }
-    
-    func setBlueColor () {
-        blueButton.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
-    }
-    
-    func setSilverColor () {
-        silverButton.backgroundColor = UIColor(red: 161/255, green: 165/255, blue: 163/255, alpha: 1.0)
-    }
+//    func setRedButtonColor () {
+//        redButton.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
+//    }
+//    
+//    func setYellowColor () {
+//        yellowButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1.0)
+//    }
+//    
+//    func setOrangeColor () {
+//        orangeButton.backgroundColor = UIColor(red: 248/255, green: 151/255, blue: 29/255, alpha: 1.0)
+//    }
+//    
+//    func setGreenColor () {
+//        greenButton.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 89/255, alpha: 1.0)
+//    }
+//    
+//    func setBlueColor () {
+//        blueButton.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
+//    }
+//    
+//    func setSilverColor () {
+//        silverButton.backgroundColor = UIColor(red: 161/255, green: 165/255, blue: 163/255, alpha: 1.0)
+//    }
     
 
     
@@ -323,6 +324,8 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         }
         
         issuesReported.saveInBackground()
+        saveToParseButton.enabled = true
+        
         
         
         self.navigationController!.popToRootViewControllerAnimated(true)
@@ -347,12 +350,14 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         dataManager.fetchIssuesFromParse()
         filterDataForLine("RD")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newIssueDataReceived", name: "receivedIssueDataFromServer", object: nil)
-        self.setBlueColor()
-        self.setGreenColor()
-        self.setRedButtonColor()
-        self.setOrangeColor()
-        self.setYellowColor()
-        self.setSilverColor()
+//        self.setBlueColor()
+//        self.setGreenColor()
+//        self.setRedButtonColor()
+//        self.setOrangeColor()
+//        self.setYellowColor()
+//        self.setSilverColor()
+        saveToParseButton.enabled = false
+        
         
         
     }

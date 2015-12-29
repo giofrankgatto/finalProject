@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class DataManager: NSObject {
+class DataManager {
     
     static let sharedInstance = DataManager()
     
