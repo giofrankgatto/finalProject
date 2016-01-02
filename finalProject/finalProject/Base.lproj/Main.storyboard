@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -55,56 +56,88 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-SN-WKv">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="qJe-SN-WKv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="TiW-bu-NVk"/>
                                 </connections>
                             </mapView>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tB-f3-Xbl" userLabel="Blue">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3tB-f3-Xbl" userLabel="Blue">
                                 <rect key="frame" x="0.0" y="500" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3tB-f3-Xbl" secondAttribute="height" multiplier="1:1" id="iSE-UU-fGY"/>
+                                </constraints>
                                 <state key="normal" image="BL"/>
                                 <connections>
                                     <action selector="lineButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oci-bA-zSW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sij-n8-XNU" userLabel="Green">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sij-n8-XNU" userLabel="Green">
                                 <rect key="frame" x="100" y="500" width="100" height="100"/>
                                 <state key="normal" image="GR"/>
                                 <connections>
                                     <action selector="lineButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WrI-P1-BfB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSh-Z0-5kv" userLabel="Orange">
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GSh-Z0-5kv" userLabel="Orange">
                                 <rect key="frame" x="200" y="500" width="100" height="100"/>
                                 <state key="normal" image="OR"/>
                                 <connections>
                                     <action selector="lineButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bQt-Vr-iG3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2T1-Og-SvH" userLabel="Red">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2T1-Og-SvH" userLabel="Red">
                                 <rect key="frame" x="300" y="500" width="100" height="100"/>
                                 <state key="normal" image="RD"/>
                                 <connections>
                                     <action selector="lineButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dbw-d8-Wsd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSA-Q3-5CY" userLabel="Yellow">
-                                <rect key="frame" x="500" y="500" width="100" height="100"/>
-                                <state key="normal" image="YL"/>
-                                <connections>
-                                    <action selector="lineButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="79V-ah-GYW"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYu-ZC-Pd9" userLabel="Silver">
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HYu-ZC-Pd9" userLabel="Silver">
                                 <rect key="frame" x="400" y="500" width="100" height="100"/>
                                 <state key="normal" image="SV"/>
                                 <connections>
                                     <action selector="lineButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Gy-hO-a8K"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZSA-Q3-5CY" userLabel="Yellow">
+                                <rect key="frame" x="500" y="500" width="100" height="100"/>
+                                <state key="normal" image="YL"/>
+                                <connections>
+                                    <action selector="lineButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="79V-ah-GYW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GSh-Z0-5kv" firstAttribute="leading" secondItem="sij-n8-XNU" secondAttribute="trailing" id="8oX-ja-3V6"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sij-n8-XNU" secondAttribute="bottom" id="9Gp-Bi-zLc"/>
+                            <constraint firstItem="HYu-ZC-Pd9" firstAttribute="width" secondItem="3tB-f3-Xbl" secondAttribute="width" id="9wB-Nt-ggT"/>
+                            <constraint firstItem="ZSA-Q3-5CY" firstAttribute="width" secondItem="3tB-f3-Xbl" secondAttribute="width" id="C68-xL-1YW"/>
+                            <constraint firstItem="sij-n8-XNU" firstAttribute="leading" secondItem="3tB-f3-Xbl" secondAttribute="trailing" id="GYw-UL-R3t"/>
+                            <constraint firstItem="2T1-Og-SvH" firstAttribute="height" secondItem="3tB-f3-Xbl" secondAttribute="height" id="HJe-Ws-1EN"/>
+                            <constraint firstItem="sij-n8-XNU" firstAttribute="width" secondItem="3tB-f3-Xbl" secondAttribute="width" id="JQa-Qo-tV1"/>
+                            <constraint firstItem="ZSA-Q3-5CY" firstAttribute="leading" secondItem="HYu-ZC-Pd9" secondAttribute="trailing" id="Jni-cJ-hgf"/>
+                            <constraint firstItem="GSh-Z0-5kv" firstAttribute="width" secondItem="3tB-f3-Xbl" secondAttribute="width" id="KM5-Co-Cu1"/>
+                            <constraint firstItem="HYu-ZC-Pd9" firstAttribute="height" secondItem="3tB-f3-Xbl" secondAttribute="height" id="KxF-zc-qjc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="2T1-Og-SvH" secondAttribute="bottom" id="OFz-tK-Ymo"/>
+                            <constraint firstItem="ZSA-Q3-5CY" firstAttribute="height" secondItem="3tB-f3-Xbl" secondAttribute="height" id="WOl-Yu-ihu"/>
+                            <constraint firstItem="3tB-f3-Xbl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="WPv-se-yhc"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZSA-Q3-5CY" secondAttribute="bottom" id="XDa-2V-qZQ"/>
+                            <constraint firstItem="2T1-Og-SvH" firstAttribute="width" secondItem="3tB-f3-Xbl" secondAttribute="width" id="Y07-Vl-SEA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="qJe-SN-WKv" secondAttribute="bottom" id="Yks-yw-qsH"/>
+                            <constraint firstItem="GSh-Z0-5kv" firstAttribute="height" secondItem="3tB-f3-Xbl" secondAttribute="height" id="eKe-dw-jNh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="GSh-Z0-5kv" secondAttribute="bottom" id="enm-pi-OgW"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZSA-Q3-5CY" secondAttribute="trailing" constant="-20" id="fHu-8k-xgx"/>
+                            <constraint firstItem="HYu-ZC-Pd9" firstAttribute="leading" secondItem="2T1-Og-SvH" secondAttribute="trailing" id="i2f-Lf-FrK"/>
+                            <constraint firstItem="qJe-SN-WKv" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="leB-Pj-s9V"/>
+                            <constraint firstItem="2T1-Og-SvH" firstAttribute="leading" secondItem="GSh-Z0-5kv" secondAttribute="trailing" id="n8N-fw-F4D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qJe-SN-WKv" secondAttribute="trailing" constant="-20" id="nNd-9K-U0G"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="3tB-f3-Xbl" secondAttribute="bottom" id="rG8-ba-b7Q"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="HYu-ZC-Pd9" secondAttribute="bottom" id="svp-nk-MbX"/>
+                            <constraint firstItem="qJe-SN-WKv" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="xdL-ZY-Cxe"/>
+                            <constraint firstItem="sij-n8-XNU" firstAttribute="height" secondItem="3tB-f3-Xbl" secondAttribute="height" id="yBZ-to-8b4"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="trazeDC" id="acO-Om-2Ek">
                         <barButtonItem key="leftBarButtonItem" title="Login" id="bNN-zr-TBp">
@@ -453,6 +486,8 @@
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="pz0-Ry-Bad"/>
+                                                    <exclude reference="MGC-ea-We7"/>
+                                                    <exclude reference="xuF-tH-jdO"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
