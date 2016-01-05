@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		8F235AD71C15E42600E15358 /* TrainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F235AD61C15E42600E15358 /* TrainTableViewCell.swift */; };
-		8F2FBA5D1C224D42008CA6F2 /* Antonio-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F2FBA5B1C224D42008CA6F2 /* Antonio-Bold.ttf */; };
-		8F2FBA5E1C224D42008CA6F2 /* Antonio-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8F2FBA5C1C224D42008CA6F2 /* Antonio-Regular.ttf */; };
 		8F5C59281C0F44F000CECCBA /* StationInfoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C59261C0F44F000CECCBA /* StationInfoList.xcdatamodeld */; };
 		8F5C59301C0F5B0100CECCBA /* MetroStation+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C592E1C0F5B0100CECCBA /* MetroStation+CoreDataProperties.swift */; };
 		8F5C59311C0F5B0100CECCBA /* MetroStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5C592F1C0F5B0100CECCBA /* MetroStation.swift */; };
@@ -58,8 +56,6 @@
 		1E8B04069BB478F534FF1602 /* Pods_finalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_finalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85601D549BDABCCB1B99C263 /* Pods-finalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-finalProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-finalProject/Pods-finalProject.release.xcconfig"; sourceTree = "<group>"; };
 		8F235AD61C15E42600E15358 /* TrainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainTableViewCell.swift; sourceTree = "<group>"; };
-		8F2FBA5B1C224D42008CA6F2 /* Antonio-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Antonio-Bold.ttf"; sourceTree = "<group>"; };
-		8F2FBA5C1C224D42008CA6F2 /* Antonio-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Antonio-Regular.ttf"; sourceTree = "<group>"; };
 		8F5C59271C0F44F000CECCBA /* StationInfoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = StationInfoList.xcdatamodel; sourceTree = "<group>"; };
 		8F5C592E1C0F5B0100CECCBA /* MetroStation+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MetroStation+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8F5C592F1C0F5B0100CECCBA /* MetroStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetroStation.swift; sourceTree = "<group>"; };
@@ -219,8 +215,6 @@
 				8F86722B1C2D195600406EEC /* Roboto-BoldItalic.ttf */,
 				8F86722C1C2D195600406EEC /* Roboto-Black.ttf */,
 				8F86722D1C2D195600406EEC /* Roboto-BlackItalic.ttf */,
-				8F2FBA5B1C224D42008CA6F2 /* Antonio-Bold.ttf */,
-				8F2FBA5C1C224D42008CA6F2 /* Antonio-Regular.ttf */,
 			);
 			name = fonts;
 			sourceTree = "<group>";
@@ -307,11 +301,9 @@
 				8F8672311C2D195600406EEC /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				8F81ADA91C0C984A00D29A1E /* Assets.xcassets in Resources */,
 				8F86723F1C2D195600406EEC /* Roboto-BlackItalic.ttf in Resources */,
-				8F2FBA5E1C224D42008CA6F2 /* Antonio-Regular.ttf in Resources */,
 				8F86722F1C2D195600406EEC /* RobotoCondensed-Light.ttf in Resources */,
 				8F86723B1C2D195600406EEC /* Roboto-Light.ttf in Resources */,
 				8F86723D1C2D195600406EEC /* Roboto-BoldItalic.ttf in Resources */,
-				8F2FBA5D1C224D42008CA6F2 /* Antonio-Bold.ttf in Resources */,
 				8F8672451C31EDCE00406EEC /* System San Francisco Display Regular.ttf in Resources */,
 				8F8672301C2D195600406EEC /* RobotoCondensed-LightItalic.ttf in Resources */,
 				8F8672361C2D195600406EEC /* Roboto-Regular.ttf in Resources */,

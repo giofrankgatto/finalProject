@@ -58,7 +58,6 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TrainTableViewCell
             let nextTrain = dataManager.trainsArray[indexPath.row]
-            //            cell.locationName!.text = (nextTrain.locationName as String)
             cell.destinationName!.text = (nextTrain.destinationName as String)
             cell.minutesToArrival!.text = (nextTrain.minutesToArrival as String)
             cell.lineColor!.text = (nextTrain.lineColor as String)
@@ -77,21 +76,11 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
         trainsTableView.reloadData()
     }
     
-   //MARK: - API Data Label Methods
-    
-    
-    
-    
-        
-    
-    
     //MARK: - Life Cycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(currentStation.stationName)
         self.title = currentStation.stationName
-       // stationName.text = currentStation.stationName
         
         dataManager.getTrainsFromServer(currentStation.stationCode)
         dataManager.fetchReportedIssuesFromParse(currentStation.stationName)

@@ -10,7 +10,7 @@ import UIKit
 import ParseUI
 import Parse
 import MapKit
-//import CoreData
+
 
 class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -51,16 +51,13 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     func updateLoginButtonDisplay() {
         if let _ = PFUser.currentUser() {
-            print("\(PFUser.currentUser()!.username) is logged IN")
             loginButton.title = "Logout"
         } else {
-            print("NO ONE is logged IN")
             loginButton.title = "Login"
         }
     }
     
     @IBAction func loginButtonPressed (sender: UIBarButtonItem) {
-        print("Login Button Pressed")
         if let _ = PFUser.currentUser() {
             PFUser.logOut()
             loginButton.title = "Login"
@@ -118,9 +115,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
    
     
     func centerMapOnLocation(map:MKMapView) {
-        print("Map on Location")
         let currentLocation = locationManager.location!.coordinate
-        print(currentLocation)
         let center = CLLocationCoordinate2DMake(currentLocation.latitude, currentLocation.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
         map.setRegion(region, animated: true)
@@ -129,14 +124,12 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
         locationManager.stopUpdatingLocation()
         centerMapOnLocation(stationMapView)
     }
     
     func turnOnLocationMonitoring() {
-        print("starting monitoring")
+       
         locationManager.startUpdatingLocation()
         stationMapView.showsUserLocation = true
     }
@@ -146,20 +139,14 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         if CLLocationManager.locationServicesEnabled() {
-            print("LocSvcs Enabled")
             switch CLLocationManager.authorizationStatus() {
             case .AuthorizedAlways, .AuthorizedWhenInUse:
-                print("Always")
                 turnOnLocationMonitoring()
-            case .Denied, .Restricted:
-                print("Hey User - turn us back on");
-            case .NotDetermined:
-                print("Not Determined")
+            case .Denied, .Restricted, .NotDetermined:
                 locationManager.requestWhenInUseAuthorization()
             }
             
         } else {
-            print("Turn on Location Services in Settings");
         }
     }
 
@@ -193,7 +180,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
                 pin = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
                 pin!.canShowCallout = true
                 pin!.image = UIImage(named: "metropin")
-//                pin!.pinTintColor = UIColor.blackColor()
                 pin!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
             }
             pin!.annotation = annotation
@@ -206,11 +192,9 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     //MARK: - Segue Methods
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print("Tapped")
         self.selectedStationName = view.annotation!.title!
         self.selectedTrainName = view.annotation!.title!
         self.performSegueWithIdentifier("segueStationDetail", sender: self)
-        print("segue to station")
     }
     
     @IBAction func lineButtonPressed(button: UIButton) {
@@ -228,7 +212,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         case 6:
             senderLine = "YL"
         default:
-            print("Not segueing")
+        break
         }
         performSegueWithIdentifier("segueLineIssue", sender: self)
     }
@@ -240,7 +224,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         if segue.identifier == "segueStationDetail" {
             let destController = segue.destinationViewController as! StationInfoViewController
             destController.currentStation = dataManager.getStationWithName(selectedStationName)
-            print(selectedStationName)
         } else if segue.identifier == "segueLineIssue" {
             let destController = segue.destinationViewController as! LineIssuesViewController
             destController.currentLine = senderLine
@@ -251,22 +234,12 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
 
     //MARK: - Get Data Methods
-    
-//    @IBAction func getDataSearchButton(sender: UIBarButtonItem) {
-//        if networkManager.serverAvailable {
-//            print ("server available")
-//            dataManager.getDataFromServer()
-//        } else {
-//            print("Server Not Available")
-//        }
-//    }
+
     
     func getStationList() {
         if networkManager.serverAvailable {
-            print("server available - station list")
             dataManager.getStationListFromServer()
         } else {
-            print("server is not available - station list")
         }
     }
 
@@ -280,13 +253,7 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
         
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                print(objects)
-                print ("Got Line Data")
-//                self.reportedLineIssuesArray = objects!
-//                dispatch_async(dispatch_get_main_queue()) {
-//                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedLineIssueDataFromServer", object: nil))
-//                    
-//                }
+                
             }
         }
     }
@@ -297,10 +264,8 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fetchLineReportsFromParse("RD")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "getStationList", name: "reachabilityChanged", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "annotateMapLocations", name: "receivedStationListFromServer", object: nil)
-//        dataManager.getStationListFromServer()
         dataManager.fetchIssuesFromParse()
     }
     
@@ -312,7 +277,6 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 

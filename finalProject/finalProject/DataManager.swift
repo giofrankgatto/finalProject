@@ -33,27 +33,21 @@ class DataManager {
     func parseStationData (data: NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
-            print("JSON:\(jsonResult)")
             trainsArray.removeAll()
             let tempArray = jsonResult.objectForKey("Trains") as! NSArray
             for train in tempArray {
                 let currentTrainInfo = Trains()
-//                stationInfo.numberOfCars = String(train.objectForKey("Car")!)
                 currentTrainInfo.destinationName = String(train.objectForKey("DestinationName")!)
                 currentTrainInfo.lineColor = String(train.objectForKey("Line")!)
                 currentTrainInfo.locationName = String(train.objectForKey("LocationName")!)
                 currentTrainInfo.minutesToArrival = String(train.objectForKey("Min")!)
-                print("Station Name: \(currentTrainInfo.locationName)")
                 trainsArray.append(currentTrainInfo)
             }
-            print("Train Count \(trainsArray.count)")
-            
             
             dispatch_async(dispatch_get_main_queue()) {
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedTrainDataFromServer", object: nil))
             }
         } catch {
-            print ("JSON Parsing Error")
         }
     }
     
@@ -64,8 +58,6 @@ class DataManager {
         defer {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         }
-//        let url = NSURL(string: "http://\(baseURLString)/StationPrediction.svc/json/GetPrediction/All")
-        print("Would be: \("http://\(baseURLString)/StationPrediction.svc/json/GetPrediction/\(stationCode)")")
         let url = NSURL(string: "http://\(baseURLString)/StationPrediction.svc/json/GetPrediction/\(stationCode)")
         let urlRequest = NSMutableURLRequest(URL: url!, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
         urlRequest.HTTPMethod = "GET"
@@ -77,36 +69,15 @@ class DataManager {
                     return
                 }
                 if httpResponse.statusCode == 200 {
-                    print("Got Data")
                     self.parseStationData(data!)
                 } else {
-                    print("Got Other Status Code: \(httpResponse.statusCode)")
                 }
             } else {
-                print("No Data")
             }
         }
         task.resume()
     }
-//    
-//    func convertCoordinateToString(coordinate: CLLocationCoordinate2D) -> String {
-//        print("\(coordinate.latitude),\(coordinate.longitude)")
-//        return "\(coordinate.latitude),\(coordinate.longitude)"
-//    }
-//    
-//    func geocodeAddress(address: String) {
-//        let geocoder = CLGeocoder()
-//        
-//        geocoder.geocodeAddressString(address) { (placemarks, error) -> Void in
-//            if let firstPlacemark = placemarks?.first {
-//                let coordinates = firstPlacemark.location!.coordinate
-//                
-//                self.getDataFromServer(self.convertCoordinateToString(coordinates))
-//                
-//            }
-//        }
-//    }
-    
+
     
     
     //MARK: - Station List Methods
@@ -119,7 +90,6 @@ class DataManager {
     func parseStationListData (data: NSData) {
         do {
             let jsonResult = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
-            print("JSON:\(jsonResult)")
             stationsArray.removeAll()
             let stationListArray = jsonResult.objectForKey("Stations") as! [NSDictionary]
             for station in stationListArray {
@@ -133,17 +103,13 @@ class DataManager {
                 stationListInfo.stationLine3 = String(station["LineCode3"]!)
                 stationListInfo.stationLine4 = String(station["LineCode4"]!)
                 
-                print("Station Name: \(stationListInfo.stationName)")
-
                 let stationAddress = station.objectForKey("Address") as! NSDictionary
                 stationListInfo.stationStreet = String(stationAddress ["Street"]!)
                 stationListInfo.stationCity = String(stationAddress ["City"]!)
                 stationListInfo.stationState = String(stationAddress ["State"]!)
                 stationListInfo.stationZip = String(stationAddress ["Zip"]!)
-                print("Station Street: \(stationListInfo.stationStreet)")
                 stationsArray.append(stationListInfo)
             }
-            print("Count \(stationsArray.count)")
             
             
             
@@ -152,7 +118,6 @@ class DataManager {
                 NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedStationListFromServer", object: nil))
             }
         } catch {
-            print ("JSON Parsing Error")
         }
     }
     
@@ -174,13 +139,10 @@ class DataManager {
                     return
                 }
                 if httpResponse.statusCode == 200 {
-                    print("Got Station List Data")
                     self.parseStationListData(data!)
                 } else {
-                    print("Got Other Status Code: \(httpResponse.statusCode)")
                 }
             } else {
-                print("No Data")
             }
         }
         task.resume()
@@ -194,14 +156,11 @@ class DataManager {
         fetchIssues.orderByAscending("issueName")
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                print("Got Classes Data")
                 self.issuesArray = objects!
-                //                print("Issues Array: \(self.issuesArray)")
                 dispatch_async(dispatch_get_main_queue()) {
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedIssueDataFromServer", object: nil))
                 }
             } else {
-                print("No Issues")
             }
         }
         
@@ -213,14 +172,11 @@ class DataManager {
         fetchIssues.orderByAscending("Issue")
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                print("Got Classes Data")
                 self.reportedIssuesArray = objects!
-                //                print("Issues Array: \(self.issuesArray)")
                 dispatch_async(dispatch_get_main_queue()) {
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedReportedIssueDataFromServer", object: nil))
                 }
             } else {
-                print("No Issues")
             }
         }
         
@@ -231,8 +187,6 @@ class DataManager {
         fetchIssues.whereKey("Line", matchesRegex: selectedLine)
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                print(objects)
-                print ("Got Line Data")
                 self.reportedLineIssuesArray = objects!
                 dispatch_async(dispatch_get_main_queue()) {
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "receivedLineIssueDataFromServer", object: nil))

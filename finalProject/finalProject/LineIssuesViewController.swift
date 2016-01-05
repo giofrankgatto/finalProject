@@ -26,8 +26,6 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
         
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                print(objects)
-                print ("Got Line Data")
                 
             }
         }
@@ -101,7 +99,6 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotLineIssuesData", name: "receivedLineIssueDataFromServer", object: nil)
         
         fetchLineReportsFromParse(currentLine)
-        print("RLIACount \(dataManager.reportedLineIssuesArray.count)")
         lineIssuesCollectionView.reloadData()
 
       
