@@ -4,6 +4,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="System San Francisco Display Bold.ttf">
+            <string>.HelveticaNeueDeskInterface-Bold</string>
+        </mutableArray>
+        <mutableArray key="System San Francisco Display Thin.ttf">
+            <string>.HelveticaNeueDeskInterface-Thin</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -16,7 +24,37 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="traze" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nff-Jn-CST">
+                                <rect key="frame" x="134" y="209" width="332" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="332" id="0Ft-s1-tdj"/>
+                                    <constraint firstAttribute="height" constant="124" id="WXl-BK-cet"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Bold" family="SFNS Display" pointSize="132"/>
+                                <color key="textColor" red="0.019607843137254902" green="0.96078431372549022" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="5" height="5"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="METRO up-to-the-minute." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SYQ-UJ-7ZS">
+                                <rect key="frame" x="181" y="341" width="239" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="2Da-Oy-sCu"/>
+                                    <constraint firstAttribute="width" constant="239" id="ZfU-4i-IqT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Thin" family="SFNS Display" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="nff-Jn-CST" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OjT-aS-ScP"/>
+                            <constraint firstItem="nff-Jn-CST" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="189" id="Y5M-nk-HTV"/>
+                            <constraint firstItem="SYQ-UJ-7ZS" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="bxe-Ab-VqZ"/>
+                            <constraint firstItem="SYQ-UJ-7ZS" firstAttribute="top" secondItem="nff-Jn-CST" secondAttribute="bottom" constant="8" id="cuw-J5-Ujo"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

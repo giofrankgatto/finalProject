@@ -71,6 +71,15 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             let username = getUserNameDefault()
             loginController.logInView?.usernameField?.text = username
             
+            let logInLogoTitle = UIImageView()
+            
+            
+            logInLogoTitle.image = UIImage(named: "logologin")
+            
+            
+            loginController.logInView!.logo = logInLogoTitle
+            
+            
             presentViewController(loginController, animated: true, completion: nil)
         }
     }

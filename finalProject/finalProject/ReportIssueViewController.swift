@@ -123,7 +123,6 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
             return dataManager.issuesArray[row].objectForKey("issueName") as? String
         } else if pickerView == stationsPicker {
             return stationsLineArray[row].stationName as String
-            
         }
         return nil
     }
@@ -174,11 +173,11 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
-        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
+        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 71/255, blue: 171/255, alpha: 1.0)
         self.selectLineLabel.textColor = UIColor.whiteColor()
-        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
+        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 71/255, blue: 171/255, alpha: 1.0)
         self.selectStationLabel.textColor = UIColor.whiteColor()
-        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
+        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 71/255, blue: 171/255, alpha: 1.0)
         self.selectIssueLabel.textColor = UIColor.whiteColor()
         
 
@@ -264,6 +263,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     //MARK: - Save to Parse Methods
     
    
+    @IBOutlet weak var timePicker   :UIDatePicker!
     
     @IBAction func saveToParse(sender: UIBarButtonItem) {
     
@@ -303,12 +303,6 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         
         self.navigationController!.popToRootViewControllerAnimated(true)
     }
-    
-    
-    
-    
-    
-    
     
     
     func newIssueDataReceived () {

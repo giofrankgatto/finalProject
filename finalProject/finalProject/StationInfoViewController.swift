@@ -39,7 +39,7 @@ class StationInfoViewController: UIViewController, UITableViewDelegate, UITableV
             cell.issueNameLabel!.text = (currentIssue["Issue"] as! String)
             
             let formatter = NSDateFormatter()
-            formatter.dateFormat = "hh:ss a"
+            formatter.dateFormat = "hh:mm a"
             let stringDate = formatter.stringFromDate(currentIssue.createdAt!)
             cell.timePostedLabel.text = stringDate
             

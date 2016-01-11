@@ -170,6 +170,7 @@ class DataManager {
         let fetchIssues = PFQuery(className: "IssueReported")
         fetchIssues.whereKey("Station", equalTo: selectedStation)
         fetchIssues.orderByAscending("Issue")
+
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
                 self.reportedIssuesArray = objects!
