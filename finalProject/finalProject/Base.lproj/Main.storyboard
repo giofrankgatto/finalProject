@@ -65,12 +65,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyF-UK-Wgo">
-                                <rect key="frame" x="20" y="160" width="560" height="224.5"/>
+                                <rect key="frame" x="20" y="160" width="560" height="226.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="224.5" id="E1D-Hc-V9s"/>
+                                    <constraint firstAttribute="height" constant="226.5" id="E1D-Hc-V9s"/>
                                 </constraints>
-                                <string key="text">Traze was created for Metro riders, by Metro riders.  Have you ever been late to an event or work because of some unforeseen issue that happened during your commute?  Have you ever wished that you could know what's going on at your Metro station before you actually get there?  Well traze is here to save the day. Help your fellow commuters by posting issues that you encounter during your ride.  Together we can make commuting on the metro a better experience for everyone!</string>
+                                <string key="text">**Privacy Policy** - Upon installation, we will request to collect a few pieces of information from you, including: 1) Your email address for creating a profile with the app.  We will not send you spam mail; 2) Your current location for use of finding the closest metro stations near you; and 3) Access to your camera if you so choose to report an issue to the app.  We will never release your information to anyone, ever, for any reason.  </string>
                                 <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Thin" family="SFNS Display" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -128,7 +128,7 @@
                             <constraint firstAttribute="leadingMargin" secondItem="heu-PP-g9J" secondAttribute="leading" id="aLC-X7-zBF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="heu-PP-g9J" secondAttribute="trailing" id="cVZ-pX-mv0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d33-H6-6C3" secondAttribute="trailing" id="ryg-p0-XOG"/>
-                            <constraint firstItem="kNX-8h-4Yb" firstAttribute="top" secondItem="HyF-UK-Wgo" secondAttribute="bottom" constant="18.5" id="t8z-5o-FDR"/>
+                            <constraint firstItem="kNX-8h-4Yb" firstAttribute="top" secondItem="HyF-UK-Wgo" secondAttribute="bottom" constant="16.5" id="t8z-5o-FDR"/>
                             <constraint firstItem="heu-PP-g9J" firstAttribute="top" secondItem="kNX-8h-4Yb" secondAttribute="bottom" constant="18" id="utr-kb-dlK"/>
                             <constraint firstAttribute="leadingMargin" secondItem="HyF-UK-Wgo" secondAttribute="leading" id="wuj-HN-gJy"/>
                             <constraint firstItem="HyF-UK-Wgo" firstAttribute="top" secondItem="R7m-0W-zF1" secondAttribute="bottom" constant="8" id="z5w-K0-fiK"/>
