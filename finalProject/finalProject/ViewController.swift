@@ -79,6 +79,13 @@ class ViewController: UIViewController, PFLogInViewControllerDelegate, PFSignUpV
             
             loginController.logInView!.logo = logInLogoTitle
             
+            let signInLogoTitle = UIImageView()
+            
+            signInLogoTitle.image = UIImage(named: "logologin")
+            signupController.signUpView!.logo = signInLogoTitle
+            
+          
+            
             
             presentViewController(loginController, animated: true, completion: nil)
         }

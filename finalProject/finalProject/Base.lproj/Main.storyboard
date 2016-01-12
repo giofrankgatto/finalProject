@@ -65,7 +65,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HyF-UK-Wgo">
-                                <rect key="frame" x="20" y="160" width="560" height="226.5"/>
+                                <rect key="frame" x="20" y="140" width="560" height="226.5"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="226.5" id="E1D-Hc-V9s"/>
@@ -76,7 +76,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions/Comments/Concerns? Contact us!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kNX-8h-4Yb">
-                                <rect key="frame" x="20" y="403" width="560" height="21"/>
+                                <rect key="frame" x="20" y="383" width="560" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="lco-U4-0lr"/>
                                 </constraints>
@@ -85,7 +85,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter: @trazeDC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heu-PP-g9J">
-                                <rect key="frame" x="20" y="442" width="560" height="37"/>
+                                <rect key="frame" x="20" y="412" width="560" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="kwk-4v-zPI"/>
                                 </constraints>
@@ -93,20 +93,11 @@
                                 <color key="textColor" red="0.019607843137254902" green="0.96078431372549022" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email: trazeDC@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d33-H6-6C3">
-                                <rect key="frame" x="20" y="487" width="560" height="37"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="37" id="UvJ-XC-Agk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Bold" family="SFNS Display" pointSize="20"/>
-                                <color key="textColor" red="0.019607843137254902" green="0.96078431372549022" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="traze" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7m-0W-zF1">
-                                <rect key="frame" x="219" y="79" width="163" height="73"/>
+                                <rect key="frame" x="219" y="72" width="163" height="60"/>
                                 <color key="tintColor" red="1" green="1" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="73" id="H7o-Dv-Djz"/>
+                                    <constraint firstAttribute="height" constant="60" id="H7o-Dv-Djz"/>
                                     <constraint firstAttribute="width" constant="163" id="YfH-rX-onc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Bold" family="SFNS Display" pointSize="65"/>
@@ -115,6 +106,15 @@
                                 <color key="shadowColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="2"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email: trazeDC@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d33-H6-6C3">
+                                <rect key="frame" x="20" y="444" width="560" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="UvJ-XC-Agk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Bold" family="SFNS Display" pointSize="20"/>
+                                <color key="textColor" red="0.019607843137254902" green="0.96078431372549022" blue="0.9137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -122,14 +122,14 @@
                             <constraint firstItem="R7m-0W-zF1" firstAttribute="centerX" secondItem="G2P-3G-bvA" secondAttribute="centerX" id="8VL-T5-oCY"/>
                             <constraint firstAttribute="leadingMargin" secondItem="d33-H6-6C3" secondAttribute="leading" id="8fY-ZF-6aT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="HyF-UK-Wgo" secondAttribute="trailing" id="Fae-lI-8gH"/>
-                            <constraint firstItem="R7m-0W-zF1" firstAttribute="top" secondItem="dPF-kF-TLV" secondAttribute="bottom" constant="15" id="GII-lK-DMC"/>
-                            <constraint firstItem="d33-H6-6C3" firstAttribute="top" secondItem="heu-PP-g9J" secondAttribute="bottom" constant="8" id="JOl-Wd-NUr"/>
+                            <constraint firstItem="R7m-0W-zF1" firstAttribute="top" secondItem="dPF-kF-TLV" secondAttribute="bottom" constant="8" id="GII-lK-DMC"/>
+                            <constraint firstItem="d33-H6-6C3" firstAttribute="top" secondItem="heu-PP-g9J" secondAttribute="bottom" constant="-5" id="JOl-Wd-NUr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kNX-8h-4Yb" secondAttribute="trailing" id="WsE-ez-PVu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="heu-PP-g9J" secondAttribute="leading" id="aLC-X7-zBF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="heu-PP-g9J" secondAttribute="trailing" id="cVZ-pX-mv0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d33-H6-6C3" secondAttribute="trailing" id="ryg-p0-XOG"/>
                             <constraint firstItem="kNX-8h-4Yb" firstAttribute="top" secondItem="HyF-UK-Wgo" secondAttribute="bottom" constant="16.5" id="t8z-5o-FDR"/>
-                            <constraint firstItem="heu-PP-g9J" firstAttribute="top" secondItem="kNX-8h-4Yb" secondAttribute="bottom" constant="18" id="utr-kb-dlK"/>
+                            <constraint firstItem="heu-PP-g9J" firstAttribute="top" secondItem="kNX-8h-4Yb" secondAttribute="bottom" constant="8" id="utr-kb-dlK"/>
                             <constraint firstAttribute="leadingMargin" secondItem="HyF-UK-Wgo" secondAttribute="leading" id="wuj-HN-gJy"/>
                             <constraint firstItem="HyF-UK-Wgo" firstAttribute="top" secondItem="R7m-0W-zF1" secondAttribute="bottom" constant="8" id="z5w-K0-fiK"/>
                         </constraints>
@@ -322,6 +322,7 @@
                                                     <rect key="frame" x="8" y="129" width="178" height="58"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="58" id="VWL-A1-5Gc"/>
+                                                        <constraint firstAttribute="width" constant="178" id="omi-VP-ZdH"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Bold" family="SFNS Display" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -331,6 +332,7 @@
                                                     <rect key="frame" x="8" y="63" width="178" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="5gM-iV-IjB"/>
+                                                        <constraint firstAttribute="width" constant="178" id="huY-87-GUi"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Bold" family="SFNS Display" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -340,6 +342,7 @@
                                                     <rect key="frame" x="8" y="186" width="178" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="zXi-li-PFy"/>
+                                                        <constraint firstAttribute="width" constant="178" id="ziB-Ej-Zz4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Regular" family="SFNS Display" pointSize="10"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -349,6 +352,7 @@
                                                     <rect key="frame" x="8" y="108" width="167" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="0B0-fY-wIB"/>
+                                                        <constraint firstAttribute="width" constant="167" id="o4c-pY-gyS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name=".HelveticaNeueDeskInterface-Regular" family="SFNS Display" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
