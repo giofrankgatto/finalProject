@@ -5,7 +5,7 @@ For my final project at The Iron Yard, I chose to make an app for the local metr
 Includes:
 - MapKit with Current Location
 - Parse backend
-- WMATA API
+- JSON of WMATA API
 - Custom UI - buttons, images
 - Reachability
 
