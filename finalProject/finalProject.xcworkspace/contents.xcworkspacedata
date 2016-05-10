@@ -2,6 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
+<<<<<<< HEAD
       location = "group:finalProject/Antonio-Bold.ttf">
    </FileRef>
    <FileRef
@@ -9,6 +10,9 @@
    </FileRef>
    <FileRef
       location = "group:/Users/GiovanniGatto/Desktop/App Projects/finalProject/finalProject/traze.xcodeproj">
+=======
+      location = "group:/Users/GiovanniGatto/Desktop/App Projects/copy final 2/finalProject/finalProject/traze.xcodeproj">
+>>>>>>> d30f287047dd968a4b3a629be2a9385c5a0e7e58
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

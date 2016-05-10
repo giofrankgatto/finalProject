@@ -26,8 +26,6 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
         
         fetchIssues.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             if error == nil {
-                print(objects)
-                print ("Got Line Data")
                 
             }
         }
@@ -42,17 +40,24 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! LineIssuesCollectionViewCell
         
+       
+        
         let currentIssues = dataManager.reportedLineIssuesArray[indexPath.row]
+        
+        
+        
+        
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        let stringDate = formatter.stringFromDate(currentIssues.createdAt!)
+        cell.timeReportedLabel.text = stringDate
         
         
         
         cell.stationNameLabel.text = (currentIssues["Station"] as! String)
         cell.issueNameLabel.text = (currentIssues["Issue"] as! String)
         
-        let formatter = NSDateFormatter()
-        formatter.dateFormat = "hh:ss a"
-        let stringDate = formatter.stringFromDate(currentIssues.createdAt!)
-        cell.timeReportedLabel.text = stringDate
+        
         
         
         let userImageFile = currentIssues["imageFile"] as! PFFile
@@ -61,8 +66,10 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
             if error == nil {
                 if let imageData = imageData {
                     cell.issueImageView.image = UIImage(data:imageData)
+                
                 }
             }
+            
         }
         
             return cell
@@ -96,14 +103,19 @@ class LineIssuesViewController: UIViewController, UICollectionViewDataSource, UI
             self.title = "Yellow Line"
         }
         
+        
+        if dataManager.reportedLineIssuesArray.count == 0 {
+            noIssuesLabel.text = "There are no current reported issues for this line!"
+            noIssuesLabel.textColor = UIColor.blackColor()
+        }
+        
         dataManager.fetchLineReportsFromParse(currentLine)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "gotLineIssuesData", name: "receivedLineIssueDataFromServer", object: nil)
         
         fetchLineReportsFromParse(currentLine)
-        print("RLIACount \(dataManager.reportedLineIssuesArray.count)")
         lineIssuesCollectionView.reloadData()
-
+        
       
     }
 

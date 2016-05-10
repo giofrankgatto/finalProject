@@ -55,7 +55,6 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         } catch let error1 as NSError {
             error = error1
             input = nil
-            print("Error")
         }
         if error == nil && captureSession!.canAddInput(input) {
             captureSession!.addInput(input)
@@ -68,7 +67,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
             
             previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             previewLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-            previewLayer!.connection.videoOrientation = AVCaptureVideoOrientation.Portrait //could also be written as .Portrait without the AVCap blah blah since we set previewLayer to that above when we set the variables
+            previewLayer!.connection.videoOrientation = AVCaptureVideoOrientation.Portrait
             previewView.layer.addSublayer(previewLayer!)
             
             captureSession!.startRunning()
@@ -124,7 +123,6 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
             return dataManager.issuesArray[row].objectForKey("issueName") as? String
         } else if pickerView == stationsPicker {
             return stationsLineArray[row].stationName as String
-            
         }
         return nil
     }
@@ -164,7 +162,6 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         self.selectStationLabel.textColor = UIColor.whiteColor()
         self.selectIssueLabel.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
         self.selectIssueLabel.textColor = UIColor.whiteColor()
-        self.view.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
         
         filterDataForLine("RD")
     }
@@ -176,13 +173,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         orangeButton.selected = !sender.selected
         silverButton.selected = !sender.selected
         yellowButton.selected = !sender.selected
-        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
+        self.selectLineLabel.backgroundColor = UIColor(red: 0/255, green: 71/255, blue: 171/255, alpha: 1.0)
         self.selectLineLabel.textColor = UIColor.whiteColor()
-        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
+        self.selectStationLabel.backgroundColor = UIColor(red: 0/255, green: 71/255, blue: 171/255, alpha: 1.0)
         self.selectStationLabel.textColor = UIColor.whiteColor()
-        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
+        self.selectIssueLabel.backgroundColor = UIColor(red: 0/255, green: 71/255, blue: 171/255, alpha: 1.0)
         self.selectIssueLabel.textColor = UIColor.whiteColor()
-        self.view.backgroundColor = UIColor(red: 0/255, green: 150/255, blue: 214/255, alpha: 1.0)
+        
 
         filterDataForLine("BL")
     }
@@ -260,36 +257,13 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     
     
 
-//    func setRedButtonColor () {
-//        redButton.backgroundColor = UIColor(red: 209/255, green: 18/255, blue: 66/255, alpha: 1.0)
-//    }
-//    
-//    func setYellowColor () {
-//        yellowButton.backgroundColor = UIColor(red: 255/255, green: 221/255, blue: 0/255, alpha: 1.0)
-//    }
-//    
-//    func setOrangeColor () {
-//        orangeButton.backgroundColor = UIColor(red: 248/255, green: 151/255, blue: 29/255, alpha: 1.0)
-//    }
-//    
-//    func setGreenColor () {
-//        greenButton.backgroundColor = UIColor(red: 0/255, green: 178/255, blue: 89/255, alpha: 1.0)
-//    }
-//    
-//    func setBlueColor () {
-//        blueButton.backgroundColor = UIColor(red: 0/255, green: 18/255, blue: 214/255, alpha: 1.0)
-//    }
-//    
-//    func setSilverColor () {
-//        silverButton.backgroundColor = UIColor(red: 161/255, green: 165/255, blue: 163/255, alpha: 1.0)
-//    }
-    
 
     
     
     //MARK: - Save to Parse Methods
     
    
+    @IBOutlet weak var timePicker   :UIDatePicker!
     
     @IBAction func saveToParse(sender: UIBarButtonItem) {
     
@@ -316,7 +290,6 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         if let imageCaptured = capturedImage.image {
             let imageData = UIImageJPEGRepresentation(imageCaptured, 1.0)
             let uuid = NSUUID().UUIDString
-//            let imageName = String()
             let imageFile = PFFile(name: uuid, data:imageData!)
             
             
@@ -332,15 +305,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     
-    
-    
-    
-    
-    
-    
     func newIssueDataReceived () {
-        print("New Issue Data Received")
-        
     }
     
     //MARK: - Life Cycle Methods
@@ -350,12 +315,7 @@ class ReportIssueViewController: UIViewController, UIImagePickerControllerDelega
         dataManager.fetchIssuesFromParse()
         filterDataForLine("RD")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "newIssueDataReceived", name: "receivedIssueDataFromServer", object: nil)
-//        self.setBlueColor()
-//        self.setGreenColor()
-//        self.setRedButtonColor()
-//        self.setOrangeColor()
-//        self.setYellowColor()
-//        self.setSilverColor()
+
         saveToParseButton.enabled = false
         
         

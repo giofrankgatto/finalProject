@@ -19,27 +19,19 @@ class NetworkManager: NSObject {
     func reachabilityChanged(note: NSNotification) {
         let reach = note.object as! Reachability
         serverAvailable = !(reach.currentReachabilityStatus().rawValue == NotReachable.rawValue)
-        //is reachability status NOT not reachable
         
         if serverAvailable {
-            print("Changed: Server Available")
         } else {
-            print("Changed: Server NOT Available")
         }
         NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "reachabilityChanged", object: nil))
     }
     
     override init() {
         super.init()
-        //anytime you do an override, you need to call a super
-        print("Starting Network Manager")
         let dataManager = DataManager.sharedInstance
-        //this brings the property from DM over
         serverReach = Reachability(hostName: dataManager.baseURLString)
-        //set host name
         serverReach?.startNotifier()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reachabilityChanged:", name: kReachabilityChangedNotification, object: nil)
-        //everytime reachability changes it sends us a notification
         
     }
     
